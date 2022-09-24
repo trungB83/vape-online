@@ -1,9 +1,9 @@
 import React from "react";
 import "./productCategory.scss";
-import prductImg from "../../assets/images/IQOS-BLUE-gia-ban-hcm-0.jpg";
-import asideProductImg from "../../assets/images/nga-360x360-100x100.jpg";
 import { Breadcrumb } from "antd";
 import { Link } from "react-router-dom";
+import prductImg from "../../assets/images/IQOS-BLUE-gia-ban-hcm-0.jpg";
+import asideProductImg from "../../assets/images/nga-360x360-100x100.jpg";
 import asideImg from "../../assets/images/cuahang.jpg";
 
 const productCategory = () => (
