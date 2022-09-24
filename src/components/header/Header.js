@@ -11,7 +11,7 @@ function Header() {
         <div className="container">
           <div className="header-main">
             <div className="header__logo">
-              <Link to="#">
+              <Link to="/">
                 <img src={logoImg} alt="" />
               </Link>
             </div>
@@ -27,7 +27,7 @@ function Header() {
                   <Link to="product-category/:productCategoryId">Sản phẩm</Link>
                 </li>
                 <li className="header__navigate-item">
-                  <Link to="/">Tin Tức</Link>
+                  <Link to="post-category/:postCategoryId">Tin Tức</Link>
                 </li>
                 <li className="header__navigate-item">
                   <Link to="/">Hỏi đáp</Link>

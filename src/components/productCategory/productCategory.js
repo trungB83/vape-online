@@ -5,6 +5,7 @@ import asideProductImg from "../../assets/images/nga-360x360-100x100.jpg";
 import { Breadcrumb } from "antd";
 import { Link } from "react-router-dom";
 import asideImg from "../../assets/images/cuahang.jpg";
+
 const productCategory = () => (
   <div className="container">
     <div className="productCategory__content">
@@ -194,8 +195,9 @@ const productCategory = () => (
               <div className="product-text">
                 <div className="product-title">IQOS 2.4 Limited Blue</div>
                 <div className="product-price__text">
-                  <p>Giá: <p className="product-price">5.000.000 VNĐ</p></p>
-                  
+                  <p>
+                    Giá: <p className="product-price">5.000.000 VNĐ</p>
+                  </p>
                 </div>
               </div>
             </li>
@@ -209,7 +211,6 @@ const productCategory = () => (
                 </div>
               </div>
             </li>
-
           </ul>
           ;
         </div>
