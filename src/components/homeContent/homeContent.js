@@ -1,12 +1,11 @@
 import React from "react";
 import "./homeContent.scss";
-import { Row, Col } from "antd";
 import sliderImg from "../../assets/images/slider.jpg";
 import icon1 from "../../assets/images/icon-1.png";
 import icon3 from "../../assets/images/icon3.png";
 import icon4 from "../../assets/images/icon-4.png";
 import prductImg from "../../assets/images/IQOS-BLUE-gia-ban-hcm-0.jpg";
-
+import chonkDescrpitionImg from "../../assets/images/cuahang.jpg";
 function homeContent() {
   return (
     <>
@@ -113,28 +112,28 @@ function homeContent() {
           <div clasName="products__group">
             <ul className="products__list">
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </li>
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="product-img" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </li>
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="product-img" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </li>
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="product-img" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
@@ -150,56 +149,56 @@ function homeContent() {
           <div clasName="products__group">
             <ul className="products__list">
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="product-img" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </li>
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </li>
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </li>
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </li>
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </li>
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </li>
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </li>
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
@@ -215,28 +214,28 @@ function homeContent() {
           <div clasName="products__group">
             <ul className="products__list">
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </li>
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </li>
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </li>
               <li className="product__item">
-                <img src={prductImg} width="960" height="960" />
+                <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
@@ -246,7 +245,53 @@ function homeContent() {
           </div>
         </div>
       </section>
-      <section className="big-description"></section>
+      <section className="big-description">
+        <div className="container">
+          <div className="big-description-content">
+            <div className="big-description__image">
+              <img src={chonkDescrpitionImg} alt="" />
+            </div>
+            <div className="big-description__text">
+              <h1 className="big-description__header">IQOS là gì?</h1>
+              <p className="big-description__subdescription">
+                IQOS là cuộc gặp gỡ giữa thuốc lá truyền thống và khoa học công
+                nghệ
+              </p>
+              <ul className="big-description__list">
+                <li className="big-description__item">
+                  <p>
+                    Được đầu tư hàng tỷ Đô để nghiên cứu và phát triển bởi tập
+                    đoàn thuốc lá lớn nhất thế giới – Philip Morris ( Hãng sở
+                    hữu các nhãn hiệu thuốc lá nổi tiếng như Marlboro… )
+                  </p>
+                </li>
+                <li className="big-description__item">
+                  <p>
+                    Nó được coi là cách mạng trong ngành công nghiệp thuốc lá.
+                  </p>
+                </li>
+                <li className="big-description__item">
+                  <p>
+                    Mặc dù ý tưởng làm nóng thuốc lá (thay vì đốt) đã được hơn
+                    hai thập kỷ, nhưng chỉ bây giờ chúng ta mới có thể tìm ra
+                    cách để làm nóng thuốc lá, dẫn đến một sản phẩm đáp ứng được
+                    cho người hút thuốc lá
+                  </p>
+                </li>
+                <li className="big-description__item">
+                  <p>
+                    Tại trung tâm của IQOS là các thiết bị điện tử tinh vi nhiệt
+                    luyện các đơn vị thuốc lá được đốt nóng đặc biệt. IQOS đun
+                    nóng thuốc lá vừa đủ để giải phóng hơi nước có chứa nicotin
+                    và vẫn có hương vị mà thậm chí chúng ta không cần phải đốt
+                    cháy thuốc.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="post-list"></section>
     </>
   );

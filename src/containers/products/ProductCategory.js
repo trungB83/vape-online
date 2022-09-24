@@ -1,8 +1,16 @@
 import React from "react";
-import { Breadcrumb, Layout, Menu } from "antd";
+import Header from "components/header/Header";
+import Footer from "components/footer/Footer";
+import ProductCategories from "components/productCategory/productCategory";
 
 function ProductCategory() {
-  return <div>ProductCategory page</div>;
+  return (
+    <div className="app">
+      <Header />
+      <ProductCategories />
+      <Footer />
+    </div>
+  );
 }
 
 export default ProductCategory;

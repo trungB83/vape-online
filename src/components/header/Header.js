@@ -24,7 +24,7 @@ function Header() {
                   <Link to="/">Giới thiệu</Link>
                 </li>
                 <li className="header__navigate-item">
-                  <Link to="/">Sản phẩm</Link>
+                  <Link to="product-category/:productCategoryId">Sản phẩm</Link>
                 </li>
                 <li className="header__navigate-item">
                   <Link to="/">Tin Tức</Link>

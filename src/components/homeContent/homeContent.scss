@@ -129,3 +129,49 @@
     }
   }
 }
+
+// chonk description
+.big-description-content {
+  display: flex;
+  .big-description__image {
+    flex-basis: 40%; 
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+  .big-description__text {
+    background-color: rgb(234, 238, 244);
+    padding: 30px 30px 30px 30px;
+    margin: -20px;
+    flex: 1;
+    .big-description__header {
+      font-size: 200%;
+      color: #25376a;
+      margin-bottom: 0.5em;
+    }
+    ::before {
+      position: absolute;
+      bottom: 35%;
+      left: 47%;
+      width: 53px;
+      border-bottom: 4px solid #25376a;
+    }
+    .big-description__subdescription {
+      color: #00aae7;
+      margin-bottom: 1.3em;
+      font-weight: 500;
+    }
+    .big-description__list {
+      .big-description__item {
+        list-style: disc;
+        padding-bottom: 17px;
+        p {
+          line-height: 2;
+          font-size: 95%;
+        }
+      }
+    }
+  }
+}
