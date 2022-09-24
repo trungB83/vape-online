@@ -90,14 +90,14 @@
     font-size: 200%;
     position: relative;
     padding-bottom: 40px;
-  }
-  ::before {
-    content: "";
-    position: absolute;
-    bottom: 35%;
-    left: 47%;
-    width: 53px;
-    border-bottom: 4px solid gray;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 35%;
+      left: 47%;
+      width: 53px;
+      border-bottom: 4px solid gray;
+    }
   }
 
   .products__list {
@@ -107,6 +107,7 @@
     .product__item {
       width: 24%;
       padding: 10px 5px;
+      color: black;
       img {
         width: 100%;
         height: auto;
