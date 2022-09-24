@@ -1,0 +1,131 @@
+/* Home Content  */
+// policy
+.policy {
+  padding: 50px 0;
+  .policy-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    .policy-item {
+      padding: 0 30px 30px;
+      margin-bottom: 0;
+      .policy-item-title {
+        width: 60%;
+        line-height: 1.5;
+        margin: 10px auto;
+        color: #25376a;
+      }
+      .policy-item-description {
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+// introduce
+.introduce {
+  padding: 50px 0;
+  background: url("../../assets/images/bg-white.jpg") no-repeat fixed;
+  background-position: center center;
+  .introduce-title {
+    text-align: center;
+    color: #26376b;
+    padding: 0 30px 30px;
+    font-size: 210%;
+    font-weight: 600;
+    position: relative;
+  }
+  ::before {
+    content: "";
+    position: absolute;
+    bottom: 30%;
+    left: 47%;
+    width: 53px;
+    border-bottom: 4px solid gray;
+  }
+  .introduce-text {
+    display: flex;
+    .introduce-text-left {
+      padding: 0 30px 30px;
+      font-weight: 500;
+    }
+    .introduce-text-right {
+      padding: 0 30px 30px;
+    }
+    p {
+      padding-bottom: 20px;
+      line-height: 1.5;
+    }
+    .introduce-btn {
+      padding: 10px 12px;
+      border-radius: 3px;
+    }
+    .more-btn {
+      background-color: #25376a;
+      margin-right: 16px;
+    }
+    .video-btn {
+      background-color: #199bcd;
+    }
+    .blue-link {
+      color: #25376a;
+      transition: all 0.2s;
+    }
+    .blue-link:hover {
+      color: #68e5ba;
+    }
+  }
+}
+
+// products
+.products,
+.products-list-accessory,
+.products-list-cigarette {
+  padding: 50px 0;
+  border-bottom: 1px solid #c5c8c7;
+  .products-title-section {
+    text-align: center;
+    color: #26376b;
+    font-size: 200%;
+    position: relative;
+    padding-bottom: 40px;
+  }
+  ::before {
+    content: "";
+    position: absolute;
+    bottom: 35%;
+    left: 47%;
+    width: 53px;
+    border-bottom: 4px solid gray;
+  }
+
+  .products__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .product__item {
+      width: 24%;
+      padding: 10px 5px;
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        padding-bottom: 5px;
+      }
+      .product-text {
+        .product-title {
+          font-weight: 600;
+          margin-top: 0.1em;
+          margin-bottom: 0.1em;
+          padding: 5px 0;
+        }
+        .product-price {
+          white-space: nowrap;
+          color: #e40000;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

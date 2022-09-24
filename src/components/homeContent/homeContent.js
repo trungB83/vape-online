@@ -1,41 +1,45 @@
 import React from "react";
 import "./homeContent.scss";
 import { Row, Col } from "antd";
-import sliderImg from '../../assets/images/slider.jpg'
+import sliderImg from "../../assets/images/slider.jpg";
+import icon1 from "../../assets/images/icon-1.png";
+import icon3 from "../../assets/images/icon3.png";
+import icon4 from "../../assets/images/icon-4.png";
+import prductImg from "../../assets/images/IQOS-BLUE-gia-ban-hcm-0.jpg";
 
 function homeContent() {
   return (
     <>
-      <section class="slider">
+      <section className="slider">
         <img src={sliderImg} alt="" height="100%" />
       </section>
-      <section class="policy">
-        <div class="container">
-          <div class="policy-content">
-            <div class="policy-item">
-              <img src="./imgs/icon-1.png" alt="" />
-              <h3 class="policy-item-title">
+      <section className="policy">
+        <div className="container">
+          <div className="policy-content">
+            <div className="policy-item">
+              <img src={icon1} alt="" />
+              <h3 className="policy-item-title">
                 KHÔNG ẢNH HƯỞNG NGƯỜI XUNG QUANH
               </h3>
-              <div class="policy-item-description">
+              <div className="policy-item-description">
                 Bạn đang muốn tìm hiểu và mua sản phẩm IQOS để chăm sóc sức khỏe
                 của mình và những người xung quanh!
               </div>
             </div>
-            <div class="policy-item">
-              <img src="./imgs/icon3.png" alt="" />
-              <h3 class="policy-item-title">KHÔNG CÓ MÙI ÁM MÙI</h3>
-              <div class="policy-item-description">
+            <div className="policy-item">
+              <img src={icon3} alt="" />
+              <h3 className="policy-item-title">KHÔNG CÓ MÙI ÁM MÙI</h3>
+              <div className="policy-item-description">
                 Bạn đang muốn tìm hiểu và mua sản phẩm IQOS để chăm sóc sức khỏe
                 của mình và những người xung quanh!
               </div>
             </div>
-            <div class="policy-item">
-              <img src="./imgs/icon-4.png" alt="" />
-              <h3 class="policy-item-title">
+            <div className="policy-item">
+              <img src={icon4} alt="" />
+              <h3 className="policy-item-title">
                 GIẢM 95% ĐỘC TỐ LÀM HẠI CƠ THỂ BẠN
               </h3>
-              <div class="policy-item-description">
+              <div className="policy-item-description">
                 Bạn đang muốn tìm hiểu và mua sản phẩm IQOS để chăm sóc sức khỏe
                 của mình và những người xung quanh!
               </div>
@@ -43,17 +47,17 @@ function homeContent() {
           </div>
         </div>
       </section>
-      <section class="introduce">
-        <div class="container">
-          <div class="introduce-content">
-            <h1 class="introduce-title">Giới thiệu về IQOS Việt Nam</h1>
-            <div class="introduce-text">
-              <div class="introduce-text-left">
+      <section className="introduce">
+        <div className="container">
+          <div className="introduce-content">
+            <h1 className="introduce-title">Giới thiệu về IQOS Việt Nam</h1>
+            <div className="introduce-text">
+              <div className="introduce-text-left">
                 <p>
                   <strong>
                     Với chất lượng đã được khẳng định cùng mức giá cạnh tranh
                     trên thị trường,{" "}
-                    <a href="/" class="blue-link">
+                    <a href="/" className="blue-link">
                       <strong>thuốc lá IQOS</strong>
                     </a>{" "}
                     đã và đang trở thành sự lựa chọn hàng đầu của đông đảo khách
@@ -70,7 +74,7 @@ function homeContent() {
                   cấp nào nhằm đảm bảo uy tín, chất lượng và giá cả?
                 </p>
               </div>
-              <div class="introduce-text-right">
+              <div className="introduce-text-right">
                 <p>
                   Hãy đến với <strong>IQOS Sài Gòn</strong> của chúng tôi ngay
                   hôm nay. Sở hữu rất nhiều ưu điểm nổi bật so với các đối thủ
@@ -90,11 +94,11 @@ function homeContent() {
                   quý khách hoàn toàn có thể lựa chọn cho mình một sản phẩm phù
                   hợp.
                 </p>
-                <div class="introduce-button-group">
-                  <a href="/" class="introduce-btn more-btn">
+                <div className="introduce-button-group">
+                  <a href="/" className="introduce-btn more-btn">
                     Tìm hiểu thêm
                   </a>
-                  <a href="/" class="introduce-btn video-btn">
+                  <a href="/" className="introduce-btn video-btn">
                     Video giới thiệu
                   </a>
                 </div>
@@ -103,11 +107,147 @@ function homeContent() {
           </div>
         </div>
       </section>
-      <section class="products-list"></section>
-      <section class="products-list-accessory"></section>
-      <section class="products-list-cigarette"></section>
-      <section class="big-description"></section>
-      <section class="post-list"></section>
+      <section className="products">
+        <div className="container">
+          <h1 className="products-title-section">Sản phẩm IQOS</h1>
+          <div clasName="products__group">
+            <ul className="products__list">
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section className="products-list-accessory">
+        <div className="container">
+          <h1 className="products-title-section">Phụ kiện IQOS</h1>
+          <div clasName="products__group">
+            <ul className="products__list">
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section className="products-list-cigarette">
+        <div className="container">
+          <h1 className="products-title-section">Thuốc lá IQOS</h1>
+          <div clasName="products__group">
+            <ul className="products__list">
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+              <li className="product__item">
+                <img src={prductImg} width="960" height="960" />
+                <div className="product-text">
+                  <div className="product-title">IQOS 2.4 Limited Blue</div>
+                  <p className="product-price">5.000.000 VNĐ</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section className="big-description"></section>
+      <section className="post-list"></section>
     </>
   );
 }
