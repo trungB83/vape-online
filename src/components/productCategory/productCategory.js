@@ -119,8 +119,8 @@ const productCategory = () => (
           </aside>
         </div>
         <div className="productCategory__main-content">
-          <ul className="products__list">
-            <li className="product__item">
+          <div className="products__list">
+            <Link to="product/:productId" className="product__item">
               <img src={prductImg} alt="" />
               <div className="product-text">
                 <div className="product-title">IQOS 2.4 Limited Blue</div>
@@ -129,89 +129,8 @@ const productCategory = () => (
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </div>
-            </li>
-            <li className="product__item">
-              <img src={prductImg} alt="" />
-              <div className="product-text">
-                <div className="product-title">IQOS 2.4 Limited Blue</div>
-                <div className="product-price__text">
-                  <p>Giá:</p>
-                  <p className="product-price">5.000.000 VNĐ</p>
-                </div>
-              </div>
-            </li>
-            <li className="product__item">
-              <img src={prductImg} alt="" />
-              <div className="product-text">
-                <div className="product-title">IQOS 2.4 Limited Blue</div>
-                <div className="product-price__text">
-                  <p>Giá:</p>
-                  <p className="product-price">5.000.000 VNĐ</p>
-                </div>
-              </div>
-            </li>
-            <li className="product__item">
-              <img src={prductImg} alt="" />
-              <div className="product-text">
-                <div className="product-title">IQOS 2.4 Limited Blue</div>
-                <div className="product-price__text">
-                  <p>Giá:</p>
-                  <p className="product-price">5.000.000 VNĐ</p>
-                </div>
-              </div>
-            </li>
-            <li className="product__item">
-              <img src={prductImg} alt="" />
-              <div className="product-text">
-                <div className="product-title">IQOS 2.4 Limited Blue</div>
-                <div className="product-price__text">
-                  <p>Giá:</p>
-                  <p className="product-price">5.000.000 VNĐ</p>
-                </div>
-              </div>
-            </li>
-            <li className="product__item">
-              <img src={prductImg} alt="" />
-              <div className="product-text">
-                <div className="product-title">IQOS 2.4 Limited Blue</div>
-                <div className="product-price__text">
-                  <p>Giá:</p>
-                  <p className="product-price">5.000.000 VNĐ</p>
-                </div>
-              </div>
-            </li>
-            <li className="product__item">
-              <img src={prductImg} alt="" />
-              <div className="product-text">
-                <div className="product-title">IQOS 2.4 Limited Blue</div>
-                <div className="product-price__text">
-                  <p>Giá:</p>
-                  <p className="product-price">5.000.000 VNĐ</p>
-                </div>
-              </div>
-            </li>
-            <li className="product__item">
-              <img src={prductImg} alt="" />
-              <div className="product-text">
-                <div className="product-title">IQOS 2.4 Limited Blue</div>
-                <div className="product-price__text">
-                  <p>
-                    Giá: <p className="product-price">5.000.000 VNĐ</p>
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li className="product__item">
-              <img src={prductImg} alt="" />
-              <div className="product-text">
-                <div className="product-title">IQOS 2.4 Limited Blue</div>
-                <div className="product-price__text">
-                  <p>Giá:</p>
-                  <p className="product-price">5.000.000 VNĐ</p>
-                </div>
-              </div>
-            </li>
-          </ul>
+            </Link>
+          </div>
           ;
         </div>
       </div>
