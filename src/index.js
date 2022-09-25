@@ -8,6 +8,8 @@ import Home from "containers/home/Home";
 import Contact from "containers/contact/Contact";
 import ProductDetail from 'containers/products/ProductDetail';
 import ProductCategory from 'containers/products/ProductCategory';
+import PostList from "containers/post/PostList";
+import PostDetail from "containers/post/PostDetails";
 
 import "antd/dist/antd.css";
 import "assets/styles/styles.scss";
@@ -22,6 +24,8 @@ root.render(
         <Route path="contact" element={<Contact />} />
         <Route path="product-category/:productCategoryId" element={<ProductCategory />} />
         <Route path="product/:productId" element={<ProductDetail />} />
+        <Route path="post-category/:postCategoryId" element={<PostList />} />
+        <Route path="post/:postId" element={<PostDetail />} />
       </Route>
     </Routes>
   </BrowserRouter>

@@ -1,8 +1,16 @@
 import React from "react";
-import { Breadcrumb, Layout, Menu } from "antd";
+import Header from "components/header/Header";
+import Footer from "components/footer/Footer";
+import ProductDetails from "components/ProductDetail/ProductDetail";
 
 function ProductDetail() {
-  return <div>Home page</div>;
+  return (
+    <div className="app">
+      <Header />
+      <ProductDetails />
+      <Footer />
+    </div>
+  );
 }
 
 export default ProductDetail;
