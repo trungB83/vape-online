@@ -7,6 +7,7 @@ import { useStore } from "store";
 import axios from "axios";
 import { API_URL } from "config";
 import { TYPES } from "store";
+import { fetchPostCates, fetchPosts } from "services/post.service";
 
 function Home() {
   const [categoryProducts, setCategoryProducts] = useState([]);
@@ -17,11 +18,10 @@ function Home() {
 
   useEffect(() => {
     const getNav = async () => {
-      let postRes = await axios.get(`${API_URL}/api/posts`);
-      dispatch({ type: TYPES.GET_POSTS, payload: postRes.data });
-
-      let postCateRes = await axios.get(`${API_URL}/api/post-categories`);
-      console.log("postCateRes", postCateRes);
+      let postRes = await fetchPosts();
+      dispatch({ type: TYPES.GET_POSTS, payload: postRes });
+      let postCateRes = await fetchPostCates();
+      dispatch({ type: TYPES.GET_POST_CATEGORIES, payload: postCateRes });
 
       // setCategoryPost(postRes.data.category_list);
       // let productRes = await axios.get("http://localhost:3003/products");

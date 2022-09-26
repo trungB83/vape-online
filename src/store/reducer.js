@@ -1,6 +1,11 @@
 import { TYPES } from "store";
 
 const initState = {
+  users: {
+    list: [],
+    item: {},
+    current: {},
+  },
   posts: {
     list: [],
     item: {},
@@ -28,12 +33,12 @@ function reducer(state, action) {
     case TYPES.GET_POST_CATEGORY:
       return {
         ...state,
-        posts: { ...state.postCates, item: action.payload.data },
+        postCates: { ...state.postCates, item: action.payload.data },
       };
     case TYPES.GET_POST_CATEGORIES:
       return {
         ...state,
-        posts: { ...state.postCates, list: action.payload.data },
+        postCates: { ...state.postCates, list: action.payload.data },
       };
     default:
       break;
