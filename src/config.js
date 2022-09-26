@@ -1,0 +1,1 @@
+export const API_URL = 'https://exam-dev-api.web5days.com:5001';
