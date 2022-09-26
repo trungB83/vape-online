@@ -1,38 +1,29 @@
-import { Breadcrumb, Layout, Menu } from 'antd';
-import React from 'react';
-
-const { Header, Content, Footer } = Layout;
+import React from "react";
+import {Route, Routes } from "react-router-dom";
+import Home from "containers/home/Home";
+import Contact from "containers/contact/Contact";
+import ProductDetail from "containers/products/ProductDetail";
+import ProductCategory from "containers/products/ProductCategory";
+import PostList from "containers/post/PostList";
+import PostDetail from "containers/post/PostDetails";
+import {StoreProvider} from "store/";
 
 function App() {
   return (
-    <Layout className="layout">
-      <Header>
-        <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          items={new Array(15).fill(null).map((_, index) => {
-            const key = index + 1;
-            return {
-              key,
-              label: `nav ${key}`,
-            };
-          })}
-        />
-      </Header>
-      <Content style={{ padding: "0 50px" }}>
-        <Breadcrumb style={{ margin: "16px 0" }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
-        <div className="site-layout-content">Content</div>
-      </Content>
-      <Footer style={{ textAlign: "center" }}>
-        Ant Design ©2018 Created by Ant UED
-      </Footer>
-    </Layout>
+    <div className="App">
+      <StoreProvider>
+        <Routes>
+          <Route path="/">
+            <Route index element={<Home />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="product-category/:productCategoryId" element={<ProductCategory />} />
+            <Route path="product/:productId" element={<ProductDetail />} />
+            <Route path="post-category/:postCategoryId" element={<PostList />}/>
+            <Route path="post/:postId" element={<PostDetail />} />
+          </Route>
+        </Routes>
+      </StoreProvider>
+    </div>
   );
 }
 

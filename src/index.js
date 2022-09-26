@@ -1,15 +1,10 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter} from "react-router-dom";
 import ReactDOM from "react-dom/client";
 
 import App from "./App";
 import reportWebVitals from "reportWebVitals";
-import Home from "containers/home/Home";
-import Contact from "containers/contact/Contact";
-import ProductDetail from 'containers/products/ProductDetail';
-import ProductCategory from 'containers/products/ProductCategory';
-import PostList from "containers/post/PostList";
-import PostDetail from "containers/post/PostDetails";
+
 
 import "antd/dist/antd.css";
 import "assets/styles/styles.scss";
@@ -18,16 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <BrowserRouter>
-    <Routes>
-      <Route path="/">
-        <Route index element={<Home />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="product-category/:productCategoryId" element={<ProductCategory />} />
-        <Route path="product/:productId" element={<ProductDetail />} />
-        <Route path="post-category/:postCategoryId" element={<PostList />} />
-        <Route path="post/:postId" element={<PostDetail />} />
-      </Route>
-    </Routes>
+    <App/>
   </BrowserRouter>
 );
 

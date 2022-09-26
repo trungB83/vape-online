@@ -24,10 +24,10 @@ function Header() {
                   <Link to="/">Giới thiệu</Link>
                 </li>
                 <li className="header__navigate-item">
-                  <Link to="product-category/:productCategoryId">Sản phẩm</Link>
+                  <Link to="/product-category/:productCategoryId">Sản phẩm</Link>
                 </li>
                 <li className="header__navigate-item">
-                  <Link to="post-category/:postCategoryId">Tin Tức</Link>
+                  <Link to="/post-category/:postCategoryId">Tin Tức</Link>
                 </li>
                 <li className="header__navigate-item">
                   <Link to="/">Hỏi đáp</Link>

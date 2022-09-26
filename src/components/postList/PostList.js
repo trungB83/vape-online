@@ -10,7 +10,7 @@ function PostList() {
       <div className="postCategory">
         <div className="postCategory__content">
           <div className="postCategory__list">
-            <Link to="post/:postId" className="postCategory__post">
+            <Link to="/post/:postId" className="postCategory__post">
               <div className="postCategory__post-img">
                 <img src={postImg} alt="" />
               </div>
@@ -24,7 +24,7 @@ function PostList() {
                 </div>
               </div>
             </Link>
-            <Link to="post/:postId" className="postCategory__post">
+            <Link to="/post/:postId" className="postCategory__post">
               <div className="postCategory__post-img">
                 <img src={postImg} alt="" />
               </div>
@@ -38,7 +38,7 @@ function PostList() {
                 </div>
               </div>
             </Link>
-            <Link to="post/:postId" className="postCategory__post">
+            <Link to="/post/:postId" className="postCategory__post">
               <div className="postCategory__post-img">
                 <img src={postImg} alt="" />
               </div>
@@ -52,7 +52,7 @@ function PostList() {
                 </div>
               </div>
             </Link>
-            <Link to="post/:postId" className="postCategory__post">
+            <Link to="/post/:postId" className="postCategory__post">
               <div className="postCategory__post-img">
                 <img src={postImg} alt="" />
               </div>
@@ -66,7 +66,7 @@ function PostList() {
                 </div>
               </div>
             </Link>
-            <Link to="post/:postId" className="postCategory__post">
+            <Link to="/post/:postId" className="postCategory__post">
               <div className="postCategory__post-img">
                 <img src={postImg} alt="" />
               </div>
