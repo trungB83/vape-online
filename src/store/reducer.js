@@ -40,6 +40,27 @@ function reducer(state, action) {
         ...state,
         postCates: { ...state.postCates, list: action.payload.data },
       };
+
+    case TYPES.GET_PRODUCT:
+      return { ...state, products: { ...state.products, item: action.payload.data } };
+    case TYPES.GET_PRODUCTS:
+      return { ...state, products: { ...state.products, list: action.payload.data } };
+    case TYPES.GET_PRODUCTS_CATEGORY:
+      return {
+        ...state,
+        prodCates: { ...state.prodCates, item: action.payload.data },
+      };
+    case TYPES.GET_PRODUCTS_CATEGORIES:
+      return {
+        ...state,
+        prodCates: { ...state.prodCates, list: action.payload.data },
+      };
+      
+    case TYPES.GET_USERS:
+      return {
+        ...state,
+        users: { ...state.users, list: action.payload.data },
+      };
     default:
       break;
   }

@@ -1,0 +1,21 @@
+{"category_list": [
+    {
+      "product_category_id": 1,
+      "product_category_name": "Phụ kiện",
+      "totail_products_in_category": "99",
+      "author_category": "admin1"
+    },
+    {
+      "product_category_id": 2,
+      "product_category_name": "Sản phẩm",
+      "totail_products_in_category": "99",
+      "author_category": "admin1"
+    },
+    {
+      "product_category_id": 3,
+      "Parent_ID": 2,
+      "product_category_name": "Thuốc lá IQOS",
+      "totail_products_in_category": "99",
+      "author_category": "admin1"
+    }
+  ]}

@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 import { get } from "lodash";
 import { API_URL } from "config";
 import { getHeaders } from "./common.service";
@@ -21,6 +21,8 @@ export const fetchPostCates = async () => {
     method: "get",
     headers: getHeaders(),
   };
+  
   const result = await axios(options);
   return get(result, "data", {});
 };
+

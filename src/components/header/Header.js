@@ -38,6 +38,9 @@ function Header() {
                 <li className="header__navigate-item">
                   <Link to="/">Liên hệ</Link>
                 </li>
+                <li className="header__navigate-item">
+                  <Link to="/user/login">Đăng nhập</Link>
+                </li>
               </ul>
             </nav>
             <div className="header__hotline">
