@@ -10,6 +10,7 @@ import Login from "containers/login/Login"
 import {StoreProvider} from "store/";
 import Register from "containers/register/Register";
 import FogotPass from './containers/forgotPass/fogotPass';
+import DashBoard from "containers/dashboard/DashBoard";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="user/register" element={<Register />} />
             <Route path="user/forgot" element={<FogotPass/>} />
 
+            <Route path="admin/dashboard" element={<DashBoard/>} />
           </Route>
         </Routes>
       </StoreProvider>

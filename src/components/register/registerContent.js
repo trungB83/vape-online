@@ -21,7 +21,7 @@ function registerContent() {
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        autoComplete="off"
+        autoComplete="on"
         className="formLogin"
       >
         <h1 className="formLogin__title">Đăng ký</h1>
@@ -38,6 +38,28 @@ function registerContent() {
         </Form.Item>
 
         <Form.Item
+          name="ten_nhan_vien"
+          rules={[
+            {
+              required: true,
+              message: "Vui lòng nhập tên nhân viên!",
+            },
+          ]}
+        >
+          <Input placeholder="Tên nhân viên " />
+        </Form.Item>
+        <Form.Item
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: "Vui lòng nhập Email!",
+            },
+          ]}
+        >
+          <Input placeholder="Email " />
+        </Form.Item>
+        <Form.Item
           name="password"
           rules={[
             {
@@ -48,7 +70,26 @@ function registerContent() {
         >
           <Input.Password placeholder="Mật khẩu" />
         </Form.Item>
-
+        <Form.Item
+          name="re-password"
+          dependencies={["password"]}
+          rules={[
+            {
+              required: true,
+              message: "Vui lòng nhập mật khẩu!",
+            },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue("password") === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error("Không trùng khớp mật khẩu!"));
+              },
+            }),
+          ]}
+        >
+          <Input.Password placeholder="Xác nhận mật khẩu" />
+        </Form.Item>
         <Form.Item
           name="remember"
           valuePropName="checked"
@@ -59,7 +100,9 @@ function registerContent() {
           className="group-cb-forgot"
         >
           <Checkbox>Tự động đăng nhập</Checkbox>
-          <Link to="/user/forgot" className="group-cb-forgot__link">Quên mật khẩu</Link>
+          <Link to="/user/forgot" className="group-cb-forgot__link">
+            Quên mật khẩu
+          </Link>
         </Form.Item>
 
         <Form.Item

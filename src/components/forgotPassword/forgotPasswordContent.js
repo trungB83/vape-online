@@ -1,5 +1,5 @@
 import "./forgotPasswordContent.scss";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 

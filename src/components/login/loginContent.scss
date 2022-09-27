@@ -19,6 +19,23 @@
       padding-right: 12px;
       margin: 0 !important;
       margin-bottom: unset;
+      .ant-form-item-control {
+        width: 100%;
+        margin: auto;
+        .ant-form-item-control-input-content {
+          .ant-input {
+            padding: 10px;
+            border: none;
+            &::placeholder {
+              color: black;
+            }
+            &:hover {
+              background-color: white;
+              color: black;
+            }
+          }
+        }
+      }
     }
     .group-cb-forgot {
       .ant-form-item-control-input-content {
@@ -27,29 +44,11 @@
         .group-cb-forgot__link {
           color: black;
           &:hover {
-            color: #0043ff ;
+            color: #094aff;
           }
         }
       }
     }
-    .ant-form-item-control {
-      width: 100%;
-      margin: auto;
-      .ant-form-item-control-input-content {
-        .ant-input {
-          padding: 10px;
-          border: none;
-          &::placeholder {
-            color: black;
-          }
-          &:hover {
-            background-color: white;
-            color: black;
-          }
-        }
-      }
-    }
-
     .ant-btn {
       width: 100%;
     }
