@@ -1,15 +1,104 @@
 import "./registerContent.scss";
-import { Button, Checkbox, Form, Input } from "antd";
-import React from "react";
-import { Link } from "react-router-dom";
+import { Button, Checkbox, Form, Input, notification } from "antd";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { statusNotification } from "coreAuthent/constants/constant";
+import { pathApi } from "coreAuthent/constants/pathApi";
+import routes from "coreAuthent/constants/routes";
+import { renderContentNoti } from "coreAuthent/utils/utils";
+import { CheckCircleFilled, CloseCircleFilled } from "@ant-design/icons";
+import { httpClient } from "axiosClient";
 
-function registerContent() {
+function RegisterContent() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
+
   const onFinish = (values) => {
-    console.log("Success:", values);
+    if (
+      values &&
+      values.ten_tai_khoan &&
+      values.ten_nhan_vien &&
+      values.email &&
+      values.mat_khau &&
+      values.xac_nhan_mat_khau
+    ) {
+      const body = {
+        ten_tai_khoan: values.ten_tai_khoan.trim(),
+        ten_nhan_vien: values.ten_nhan_vien.trim(),
+        email: values.email.trim(),
+        mat_khau: values.mat_khau.trim(),
+        xac_nhan_mat_khau: values.xac_nhan_mat_khau.trim(),
+      };
+      handleRegister(body);
+    } else {
+      return;
+    }
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+  const onFinishFailed = (errorInfo) => {};
+
+  const openNotification = (content) => {
+    notification.open({
+      message: content.message,
+      description: content.description,
+      icon: content.icon,
+    });
+  };
+
+  const handleRegister = async (body) => {
+    setIsLoading(true);
+    try {
+      let contentNoti;
+      const response = await httpClient.post(pathApi.auth.regiter, body);
+      if (
+        response &&
+        response.data &&
+        response.data.token &&
+        response.data.data &&
+        response.data.success
+      ) {
+        setIsLoading(false);
+        contentNoti = {
+          ...renderContentNoti(statusNotification.register.REGISTER_SUCCESS),
+          icon: <CheckCircleFilled style={{ color: "#52c41a" }} />,
+        };
+        navigate(routes.login);
+        openNotification(contentNoti);
+      } else {
+        setIsLoading(false);
+        contentNoti = {
+          ...renderContentNoti(),
+          icon: <CloseCircleFilled style={{ color: "#ff4d4f" }} />,
+        };
+        openNotification(contentNoti);
+      }
+    } catch (error) {
+      setIsLoading(false);
+      let contentNoti;
+      if (
+        error &&
+        error.response &&
+        error.response.data &&
+        error.response.data.error &&
+        !error.response.data.success
+      ) {
+        contentNoti = {
+          ...renderContentNoti(
+            statusNotification.register.REGISTER_FAIL,
+            error.response.data.error
+          ),
+          icon: <CloseCircleFilled style={{ color: "#ff4d4f" }} />,
+        };
+        openNotification(contentNoti);
+      } else {
+        contentNoti = {
+          ...renderContentNoti(),
+          icon: <CloseCircleFilled style={{ color: "#ff4d4f" }} />,
+        };
+        openNotification(contentNoti);
+      }
+    }
   };
 
   return (
@@ -51,6 +140,10 @@ function registerContent() {
         <Form.Item
           name="email"
           rules={[
+            {
+              type: "email",
+              message: "Vui lòng nhập đúng định dạng email!",
+            },
             {
               required: true,
               message: "Vui lòng nhập Email!",
@@ -122,7 +215,7 @@ function registerContent() {
             span: 16,
           }}
         >
-          <Button type="secondary" htmlType="submit">
+          <Button type="secondary" htmlType="submit" loading={isLoading} block>
             <Link to="/user/login">Đăng nhập</Link>
           </Button>
         </Form.Item>
@@ -130,4 +223,4 @@ function registerContent() {
     </div>
   );
 }
-export default registerContent;
+export default RegisterContent;
