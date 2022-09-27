@@ -1,12 +1,12 @@
 import axios from 'axios';
-import {API_URL} from 'config'
+import {BASE_URL} from 'config'
 import { notification } from "antd"
 import { getLocal } from 'coreAuthent/utils/localStorage';
 import { auth } from 'coreAuthent/constants/constant';
 
 
 export const httpClient = axios.create({
-    baseURL: API_URL,
+    baseURL: BASE_URL,
     headers: {
         'content-type': 'application/json',
     }

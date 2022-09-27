@@ -27,9 +27,9 @@ function App() {
             <Route path="post-category/:postCategoryId" element={<PostList />}/>
             <Route path="post/:postId" element={<PostDetail />} />
 
-            <Route path="user/login" element={<Login />} />
-            <Route path="user/register" element={<Register />} />
-            <Route path="user/forgot" element={<FogotPass/>} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="forgot" element={<FogotPass/>} />
 
             <Route path="admin/dashboard" element={<DashBoard/>} />
           </Route>
