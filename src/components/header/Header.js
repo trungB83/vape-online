@@ -3,6 +3,7 @@ import "./Header.scss";
 import { Link } from "react-router-dom";
 import logoImg from '../../assets/images/logo-giuseart.png'
 import hotlineImg from '../../assets/images/hotline.png'
+import routes from "coreAuthent/constants/routes";
 
 function Header() {
   return (
@@ -39,7 +40,7 @@ function Header() {
                   <Link to="/">Liên hệ</Link>
                 </li>
                 <li className="header__navigate-item">
-                  <Link to="/login">Đăng nhập</Link>
+                  <Link to={routes.login}>Đăng nhập</Link>
                 </li>
               </ul>
             </nav>

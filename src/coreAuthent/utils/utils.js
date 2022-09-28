@@ -26,8 +26,8 @@ export const renderContentNoti = (status, desc) => {
   
       default:
         return {
-          message: "Hệ thống đã xảy ra lỗi",
-          description: "Vui lòng kiểm tra lại!"
+          message: "Hệ thống đang chay",
+          description: "Hệ thống đang chay"
         }
     }
   }

@@ -15,6 +15,7 @@ function RegisterContent() {
   const navigate = useNavigate();
 
   const onFinish = (values) => {
+    console.log(values);
     if (
       values &&
       values.ten_tai_khoan &&
@@ -204,7 +205,7 @@ function RegisterContent() {
             span: 16,
           }}
         >
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" onClick={handleRegister}>
             Đăng ký
           </Button>
         </Form.Item>
@@ -216,7 +217,7 @@ function RegisterContent() {
           }}
         >
           <Button type="secondary" htmlType="submit" loading={isLoading} block>
-            <Link to="/user/login">Đăng nhập</Link>
+            <Link to={routes.login}>Đăng nhập</Link>
           </Button>
         </Form.Item>
       </Form>

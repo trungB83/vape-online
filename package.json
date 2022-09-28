@@ -13,7 +13,6 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.20.3",
     "axios": "^0.27.2",
-    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.1",
@@ -25,9 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -41,12 +38,13 @@
       "not dead",
       "not op_mini all"
     ],
-    "homepage": "https://boonreal.github.io/vape-online/",
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
-
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }

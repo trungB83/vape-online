@@ -45,7 +45,7 @@ function Footer() {
                 Bản đồ chỉ dẫn đường đi
               </h3>
               <div className="footer__map-google">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.7758248635732!2d106.63896631411689!3d10.828460261193747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175297083300d87%3A0xdeb22a0102c21304!2zMTUgUGjhuqFtIFbEg24gQuG6oWNoLCBQaMaw4budbmcgMTUsIFTDom4gQsOsbmgsIEjhu5MgQ2jDrSBNaW5oLCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1558877243555!5m2!1sen!2s" width="100%" height={250} frameBorder={0} style={{border: 0}} allowFullScreen />
+                <iframe title="google" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.7758248635732!2d106.63896631411689!3d10.828460261193747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175297083300d87%3A0xdeb22a0102c21304!2zMTUgUGjhuqFtIFbEg24gQuG6oWNoLCBQaMaw4budbmcgMTUsIFTDom4gQsOsbmgsIEjhu5MgQ2jDrSBNaW5oLCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1558877243555!5m2!1sen!2s" width="100%" height={250} frameBorder={0} style={{border: 0}} allowFullScreen />
               </div>
             </div>
           </div>
