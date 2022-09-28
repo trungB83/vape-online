@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.07177002.css",
+    "main.js": "/static/js/main.15c053d2.js",
+    "static/js/787.94472aee.chunk.js": "/static/js/787.94472aee.chunk.js",
+    "static/media/su-dung-copy.jpg": "/static/media/su-dung-copy.8fc92d449607a39d823f.jpg",
+    "static/media/cuahang.jpg": "/static/media/cuahang.3d70a306943024a2e81d.jpg",
+    "static/media/IQOS-BLUE-gia-ban-hcm-0.jpg": "/static/media/IQOS-BLUE-gia-ban-hcm-0.f2cb43bdb39fdb805010.jpg",
+    "static/media/slider.jpg": "/static/media/slider.29c6bf27206dc33c65be.jpg",
+    "static/media/bg-white.jpg": "/static/media/bg-white.d11b6f18e47ff7889a23.jpg",
+    "static/media/cuahang-300x280.jpg": "/static/media/cuahang-300x280.5756e81a72418849584a.jpg",
+    "index.html": "/index.html",
+    "main.07177002.css.map": "/static/css/main.07177002.css.map",
+    "main.15c053d2.js.map": "/static/js/main.15c053d2.js.map",
+    "787.94472aee.chunk.js.map": "/static/js/787.94472aee.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.07177002.css",
+    "static/js/main.15c053d2.js"
+  ]
+}
