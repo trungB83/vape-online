@@ -106,7 +106,7 @@ const DashBoard = () => {
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }}>
+          <Header className="dashboard-header" style={{ padding: 0 }}>
             <div className="dashboard-header__search"></div>
             <div className="dashboard-header__user">
               <Dropdown overlay={menu} trigger={["click"]}>
