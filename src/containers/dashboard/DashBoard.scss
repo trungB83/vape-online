@@ -1,15 +1,8 @@
-.dashboard__aside {
-  .logo {
-    padding: 15px;
-    img {
-      width: 90%;
-    }
-  }
-}
 
-.ant-layout-header {
+
+.dashboard-header {
   display: flex;
-  background-color: white;
+  background-color: white!important;
   justify-content: space-between;
   .dashboard-header__logo {
     padding-left: 20px;
@@ -24,6 +17,14 @@
         margin-bottom: 3px;
         border-radius: 30px;
       }
+    }
+  }
+}
+.dashboard__aside {
+  .logo {
+    padding: 15px;
+    img {
+      width: 90%;
     }
   }
 }

@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import Logo from "assets/images/logo-giuseart.png";
 import "./DashBoard.scss";
-import { Breadcrumb, Dropdown, Input, Layout, Menu, Modal, Space } from "antd";
+import { Breadcrumb, Dropdown, Layout, Menu, Modal, Space } from "antd";
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import routes from "coreAuthent/constants/routes";
@@ -20,7 +20,7 @@ import { BASE_URL } from "config";
 const { Header, Content, Footer, Sider } = Layout;
 
 const DashBoard = () => {
-  const [userInfo, setUserInfo] = useState(() => {
+  const [userInfo] = useState(() => {
     const userInfoLocal = localStorage.getItem(auth.USER_INFO);
     if (userInfoLocal) {
       return getObjectLocal(auth.USER_INFO);
@@ -106,7 +106,7 @@ const DashBoard = () => {
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }}>
+          <Header className="dashboard-header" style={{ padding: 0 }}>
             <div className="dashboard-header__search"></div>
             <div className="dashboard-header__user">
               <Dropdown overlay={menu} trigger={["click"]}>
