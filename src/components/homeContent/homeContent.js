@@ -8,7 +8,8 @@ import icon4 from "../../assets/images/icon-4.png";
 import prductImg from "../../assets/images/IQOS-BLUE-gia-ban-hcm-0.jpg";
 import chonkDescrpitionImg from "../../assets/images/cuahang.jpg";
 
-function homeContent() {
+function homeContent(props) {
+
   return (
     <>
       <section className="slider">
@@ -113,28 +114,28 @@ function homeContent() {
           <h1 className="products-title-section">Sản phẩm IQOS</h1>
           <div clasName="products__group">
             <div className="products__list">
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </Link>
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="product-img" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </Link>
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="product-img" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </Link>
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="product-img" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
@@ -150,56 +151,56 @@ function homeContent() {
           <h1 className="products-title-section">Phụ kiện IQOS</h1>
           <div clasName="products__group">
             <div className="products__list">
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="product-img" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </Link>
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </Link>
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </Link>
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </Link>
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </Link>
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </Link>
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </Link>
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
@@ -215,28 +216,28 @@ function homeContent() {
           <h1 className="products-title-section">Thuốc lá IQOS</h1>
           <div clasName="products__group">
             <div className="products__list">
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </Link>
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </Link>
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>
                   <p className="product-price">5.000.000 VNĐ</p>
                 </div>
               </Link>
-              <Link to="product/:productId" className="product__item">
+              <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="" />
                 <div className="product-text">
                   <div className="product-title">IQOS 2.4 Limited Blue</div>

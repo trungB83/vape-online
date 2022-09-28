@@ -120,7 +120,7 @@ const productCategory = () => (
         </div>
         <div className="productCategory__main-content">
           <div className="products__list">
-            <Link to="product/:productId" className="product__item">
+            <Link to="/product/:productId" className="product__item">
               <img src={prductImg} alt="" />
               <div className="product-text">
                 <div className="product-title">IQOS 2.4 Limited Blue</div>

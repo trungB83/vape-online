@@ -1,16 +1,16 @@
 import React from "react";
 import Header from "components/header/Header";
 import Footer from "components/footer/Footer";
-import RegisterContent from '../../components/register/registerContent';
+import ForgotPasswordContent from '../../components/forgotPassword/forgotPasswordContent';
 
-function Register() {
+function forgotPass() {
   return (
     <div className="app">
       <Header />
-      <RegisterContent/>
+      <ForgotPasswordContent/>
       <Footer />
     </div>
   );
 }
 
-export default Register;
+export default forgotPass;
