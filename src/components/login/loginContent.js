@@ -7,110 +7,87 @@ import { pathApi } from "coreAuthent/constants/pathApi";
 import routes from "coreAuthent/constants/routes";
 import { renderContentNoti } from "coreAuthent/utils/utils";
 import { CheckCircleFilled, CloseCircleFilled } from "@ant-design/icons";
-import { httpClient } from 'axiosClient';
+import { httpClient } from "axiosClient";
 import { setLocal, setObjectLocal } from "coreAuthent/utils/localStorage";
 
 function LoginContent() {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-  // async function loginHandle() {
-  //   let item = { username, password };
-  //   let result = await fetch(
-  //     "https://exam-dev-api.web5days.com:5001/api/user/login",
-  //     {
-  //       method:'POST',
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Accept: "application/json",
-  //       },
-  //       body: JSON.stringify(item),
-  //     }
-  //   );
-  //   result= await result.json();
-  //   localStorage.setItem("user-info",JSON.stringify(result))
-  //   // navigate('/admin/dashboard')
-  // }
-
-  const [isLoading, setIsLoading] = useState(false)
-const navigate = useNavigate()
-
-const onFinish = values => {
-  if (values && values.ten_tai_khoan && values.mat_khau) {
-    const body = {
-      ten_tai_khoan: values.ten_tai_khoan.trim(),
-      mat_khau: values.mat_khau.trim()
-    }
-    handleLogin(body)
-  } else {
-    return
-  }
-}
-
-const onFinishFailed = errorInfo => {}
-
-const openNotification = content => {
-  notification.open({
-    message: content.message,
-    description: content.description,
-    icon: content.icon
-  })
-}
-
-const handleLogin = async body => {
-  setIsLoading(true)
-  try {
-    let contentNoti
-    const response = await httpClient.post(pathApi.auth.login, body)
-    if (
-      response &&
-      response.data &&
-      response.data.token &&
-      response.data.data &&
-      response.data.success
-    ) {
-      setIsLoading(false)
-      contentNoti = {
-        ...renderContentNoti(statusNotification.login.LOGIN_SUCCESS),
-        icon: <CheckCircleFilled style={{ color: "#52c41a" }} />
-      }
-      setLocal(auth.TOKEN, response.data.token)
-      setObjectLocal(auth.USER_INFO, response.data.data)
-      navigate(routes.dashboard)
-      openNotification(contentNoti)
+  const onFinish = (values) => {
+    if (values && values.ten_tai_khoan && values.mat_khau) {
+      const body = {
+        ten_tai_khoan: values.ten_tai_khoan.trim(),
+        mat_khau: values.mat_khau.trim(),
+      };
+      handleLogin(body);
     } else {
-      setIsLoading(false)
-      contentNoti = {
-        ...renderContentNoti(),
-        icon: <CloseCircleFilled style={{ color: "#ff4d4f" }} />
-      }
-      openNotification(contentNoti)
+      return;
     }
-  } catch (error) {
-    setIsLoading(false)
-    let contentNoti
-    if (
-      error &&
-      error.response &&
-      error.response.data &&
-      error.response.data.error
-    ) {
-      contentNoti = {
-        ...renderContentNoti(statusNotification.login.LOGIN_FAIL),
-        icon: <CloseCircleFilled style={{ color: "#ff4d4f" }} />
-      }
-      openNotification(contentNoti)
-    } else {
-      contentNoti = {
-        ...renderContentNoti(),
-        icon: <CloseCircleFilled style={{ color: "#ff4d4f" }} />
-      }
-      openNotification(contentNoti)
-    }
-  }
-}
+  };
 
+  const onFinishFailed = (errorInfo) => {};
+
+  const openNotification = (content) => {
+    notification.open({
+      message: content.message,
+      description: content.description,
+      icon: content.icon,
+    });
+  };
+
+  const handleLogin = async (body) => {
+    setIsLoading(true);
+    try {
+      let contentNoti;
+      const response = await httpClient.post(pathApi.auth.login, body);
+      if (
+        response &&
+        response.data &&
+        response.data.token &&
+        response.data.data &&
+        response.data.success
+      ) {
+        setIsLoading(false);
+        contentNoti = {
+          ...renderContentNoti(statusNotification.login.LOGIN_SUCCESS),
+          icon: <CheckCircleFilled style={{ color: "#52c41a" }} />,
+        };
+        setLocal(auth.TOKEN, response.data.token);
+        setObjectLocal(auth.USER_INFO, response.data.data);
+        navigate(routes.dashboard);
+        openNotification(contentNoti);
+      } else {
+        setIsLoading(false);
+        contentNoti = {
+          ...renderContentNoti(),
+          icon: <CloseCircleFilled style={{ color: "#ff4d4f" }} />,
+        };
+        openNotification(contentNoti);
+      }
+    } catch (error) {
+      setIsLoading(false);
+      let contentNoti;
+      if (
+        error &&
+        error.response &&
+        error.response.data &&
+        error.response.data.error
+      ) {
+        contentNoti = {
+          ...renderContentNoti(statusNotification.login.LOGIN_FAIL),
+          icon: <CloseCircleFilled style={{ color: "#ff4d4f" }} />,
+        };
+        openNotification(contentNoti);
+      } else {
+        contentNoti = {
+          ...renderContentNoti(),
+          icon: <CloseCircleFilled style={{ color: "#ff4d4f" }} />,
+        };
+        openNotification(contentNoti);
+      }
+    }
+  };
 
   return (
     <div className="main">
@@ -134,9 +111,7 @@ const handleLogin = async body => {
             },
           ]}
         >
-          <Input
-            placeholder="Tên đăng nhập "
-          />
+          <Input placeholder="Tên đăng nhập " />
         </Form.Item>
 
         <Form.Item
@@ -148,9 +123,7 @@ const handleLogin = async body => {
             },
           ]}
         >
-          <Input.Password
-            placeholder="Mật khẩu"
-          />
+          <Input.Password placeholder="Mật khẩu" />
         </Form.Item>
 
         <Form.Item
@@ -173,7 +146,13 @@ const handleLogin = async body => {
             span: 16,
           }}
         >
-          <Button type="primary" htmlType="submit" onClick={handleLogin} loading={isLoading} block>
+          <Button
+            type="primary"
+            htmlType="submit"
+            onClick={handleLogin}
+            loading={isLoading}
+            block
+          >
             Đăng nhập
           </Button>
         </Form.Item>
@@ -185,7 +164,7 @@ const handleLogin = async body => {
           }}
         >
           <Button type="secondary" htmlType="submit">
-            <Link to="/user/register">Đăng ký</Link>
+            <Link to={routes.register}>Đăng ký</Link>
           </Button>
         </Form.Item>
       </Form>

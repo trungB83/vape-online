@@ -11,6 +11,9 @@ import {StoreProvider} from "store/";
 import Register from "containers/register/Register";
 import FogotPass from './containers/forgotPass/fogotPass';
 import DashBoard from "containers/dashboard/DashBoard";
+import PostDashBoard from "containers/dashboard/pages/postList/PostList";
+import ProfileDashBoard from "containers/dashboard/pages/profile/Profile";
+import SettingDashBoard from "containers/dashboard/pages/setting/Setting";
 
 function App() {
   return (
@@ -32,6 +35,9 @@ function App() {
             <Route path="forgot" element={<FogotPass/>} />
 
             <Route path="admin/dashboard" element={<DashBoard/>} />
+            <Route path="/admin/dashboard/profile" element={<ProfileDashBoard/>} />
+            <Route path="/admin/dashboard/posts" element={<PostDashBoard/>} />
+            <Route path="/admin/dashboard/setting" element={<SettingDashBoard/>} />
           </Route>
         </Routes>
       </StoreProvider>

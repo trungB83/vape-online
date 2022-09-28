@@ -61,7 +61,7 @@ function ProductDetail() {
                 <a href="tel:0972.939.830">Hotline: 0972.939.830</a>
               </div>
               <div className="ProductDetail__buyNow">
-                <a href="#">MUA NGAY</a>
+                <Link href="#">MUA NGAY</Link>
               </div>
               <div className="ProductDetail__galery">
                 <div className="ProductDetail__image"></div>
