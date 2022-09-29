@@ -1,4 +1,45 @@
-.page {
-    background: rgb(209, 209, 209);
+.pagePostList {
+    background: #F1F1F1;
     color: black;
+    .ant-select-single, .ant-input-search {
+        width: 100%!important;
+    }
+    .first-row {
+        margin-bottom: 12px;
+    }
+    .second-row {
+        margin-bottom: 12px;
+    }
+    .right-actions {
+        .button-add-post{
+            color: #fff;
+            background: #2fa2c1;
+            border-color: #5aa9d0;
+            float: right;
+            &:hover {
+                color: #fff;
+            }
+        }
+        
+    }
+    .ant-list-header, .ant-list-footer {
+        border: 1px solid #ccd0d4;
+        border-bottom: 0px solid #ccd0d4;
+        background: #fff;
+        padding: 10px 0;
+    }
+    .ant-spin-nested-loading {
+        border:1px solid #ccd0d4;
+        .ant-list-items {
+            .ant-list-item {
+                border-bottom: 1px dashed #2FA2C1;
+                .ant-checkbox-wrapper {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+
+    }
 }

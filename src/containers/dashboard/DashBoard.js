@@ -8,9 +8,9 @@ import {
 } from "@ant-design/icons";
 import Logo from "assets/images/logo-giuseart.png";
 import "./DashBoard.scss";
-import { Breadcrumb, Dropdown, Layout, Menu, Modal, Space } from "antd";
+import {  Dropdown, Layout, Menu, Modal, Space } from "antd";
 import React, { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import routes from "coreAuthent/constants/routes";
 import { clearLocal, getObjectLocal } from "coreAuthent/utils/localStorage";
 import avatarDefault from "assets/images/avatar.png";
@@ -93,14 +93,17 @@ const DashBoard = () => {
           </div>
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
             <Menu.Item icon={<HomeFilled />} key={"1"}>
-              <Link defaultChecked={true} to={`${routes.dashboard}`}>
+              <Link defaultChecked={true} to={`${routes.dashboard}${routes.home}`}>
                 Trang chủ
               </Link>
             </Menu.Item>
             <Menu.Item icon={<DatabaseFilled />} key={"2"}>
               <Link to={`${routes.dashboard}${routes.posts}`}>Bài viết</Link>
             </Menu.Item>
-            <Menu.Item icon={<SettingFilled />} key={"3"}>
+            <Menu.Item icon={<UserOutlined />} key={"3"}>
+              <Link to={`${routes.dashboard}${routes.profilelist}`}>Người dùng</Link>
+            </Menu.Item>
+            <Menu.Item icon={<SettingFilled />} key={"4"}>
               <Link to={`${routes.dashboard}${routes.setting}`}>Cài đặt</Link>
             </Menu.Item>
           </Menu>
@@ -131,29 +134,13 @@ const DashBoard = () => {
               </Dropdown>
             </div>
           </Header>
-          <Content
-            style={{
-              margin: "0 16px",
-            }}
-          >
-            <Breadcrumb
-              style={{
-                margin: "16px 0",
-              }}
-            >
-              <Breadcrumb.Item>
-                <NavLink to={routes.profile}>User</NavLink>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
+          <Content style={{ margin: "0 16px" }}>
+           
             <div
               className="site-layout-background"
-              style={{
-                padding: 24,
-                minHeight: 360,
-              }}
+              style={{ padding: 24, minHeight: 360 }}
             >
-              Bill is a cat.
+              <Outlet />
             </div>
           </Content>
           <Footer
