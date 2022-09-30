@@ -1,5 +1,76 @@
-.page {
-    background: rgb(209, 209, 209);
-    color: black;
-    text-align: center;
+.pageProfileDetail {
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+  .ProfileDetail-Left {
+    border: 1px solid #F1F1F1;
+    .ProfileDetail-Left-inner {
+      background-color: white;
+      h2 {
+        text-align: center;
+        border: 1px solid #F1F1F1;
+      }
+      .ProfileDetail-avatar {
+        margin: 5px;
+        min-height: 300px;
+        padding: 20px 10px;
+        .user-avatar {
+          margin: auto;
+          display: block;
+        }
+      }
+      .ProfileDetail-name {
+        text-transform: uppercase;
+        font-weight: bolder;
+        text-align: center;
+        padding: 10px 0;
+      }
+      .ProfileDetail-editUser {
+        color: #fff;
+        border-color: #ff4d4f;
+        background: #ff4d4f;
+        text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
+        box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
+        height: 32px;
+        padding: 4px 16px;
+        font-size: 14px;
+        border-radius: 32px;
+        width: 90%;
+        text-align: center;
+      }
+      .Navto-addUser {
+        display: block;
+        text-align: center;
+        padding-bottom: 10px;
+      }
+    }
+  }
+  .ProfileDetail-right {
+    .ProfileDetail-text {
+      background-color: white;
+      margin: 5px;
+      min-height: 300px;
+      padding: 10px;
+      font-size: 18px;
+    }
+    .ProfileDetail-permision__data,
+    .ProfileDetail-gender__data,
+    .ProfileDetail-phone__data,
+    .ProfileDetail-email__data,
+    .ProfileDetail-address__data,
+    .ProfileDetail-date__data {
+      padding-left: 30px;
+    }
+    .ProfileDetail-permision,
+    .ProfileDetail-gender,
+    .ProfileDetail-phone,
+    .ProfileDetail-email,
+    .ProfileDetail-address,
+    .ProfileDetail-date {
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #F1F1F1;
+    }
+  }
 }
