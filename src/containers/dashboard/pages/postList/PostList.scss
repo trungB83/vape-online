@@ -27,6 +27,11 @@
         border-bottom: 0px solid #ccd0d4;
         background: #fff;
         padding: 10px 0;
+        .ant-checkbox-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
     }
     .ant-spin-nested-loading {
         border:1px solid #ccd0d4;

@@ -6,8 +6,10 @@ const routes = {
     home: '/home',
     posts: '/posts',
     profile: '/profile',
+    adduser: '/adduser',
     profilelist: '/profile-list',
     setting: '/setting'
+    
 }
 
 export default routes;

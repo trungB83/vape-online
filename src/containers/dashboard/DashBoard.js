@@ -4,6 +4,7 @@ import {
   HomeFilled,
   LogoutOutlined,
   SettingFilled,
+  UserAddOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import Logo from "assets/images/logo-giuseart.png";
@@ -103,7 +104,12 @@ const DashBoard = () => {
             <Menu.Item icon={<UserOutlined />} key={"3"}>
               <Link to={`${routes.dashboard}${routes.profilelist}`}>Người dùng</Link>
             </Menu.Item>
-            <Menu.Item icon={<SettingFilled />} key={"4"}>
+            <Menu.Item icon={<UserAddOutlined />} key={"4"}>
+              <Link defaultChecked={true} to={`${routes.dashboard}${routes.adduser}`}>
+                Thêm người dùng
+              </Link>
+            </Menu.Item>
+            <Menu.Item icon={<SettingFilled />} key={"5"}>
               <Link to={`${routes.dashboard}${routes.setting}`}>Cài đặt</Link>
             </Menu.Item>
           </Menu>

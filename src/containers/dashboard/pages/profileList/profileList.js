@@ -152,7 +152,7 @@ function ProfileList() {
           <Col className="right-actions" span={12}>
             <Button className="button-add-post ant-btn-round">
               <PlusOutlined />
-              <Link to={routes.posts}>Thêm mới bài viết</Link>
+              <Link to={`${routes.dashboard}${routes.adduser}`}>Thêm mới người dùng</Link>
             </Button>
           </Col>
         </Row>
