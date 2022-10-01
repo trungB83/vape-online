@@ -72,7 +72,7 @@ function Profile() {
                   ? userInfo.ten_nhan_vien
                   : "Tên nhân viên"}
               </h1>
-              <Link to={`${routes.dashboard}${routes.addUser}`} className="Navto-addUser">
+              <Link to={`${routes.dashboard}${routes.adduser}`} className="Navto-addUser">
                 <Button className="ProfileDetail-editUser ant-btn-round">
                   Cập nhật thành viên
                 </Button>

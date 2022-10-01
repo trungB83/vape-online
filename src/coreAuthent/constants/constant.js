@@ -9,8 +9,8 @@ export const statusNotification = {
         LOGIN_SUCCESS: 'LOGIN_SUCCESS',
         LOGIN_FAIL: 'LOGIN_FAIL'
     },
-    register: {
-        REGISTER_SUCCESS: 'REGISTER_SUCCESS',
-        REGISTER_FAIL: 'REGISTER_FAIL'
-    }
+    // register: {
+    //     REGISTER_SUCCESS: 'REGISTER_SUCCESS',
+    //     REGISTER_FAIL: 'REGISTER_FAIL'
+    // }
 }
