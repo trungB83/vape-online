@@ -15,10 +15,12 @@ import {
 import "./PostList.scss";
 import { Link } from "react-router-dom";
 import routes from "coreAuthent/constants/routes";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DownOutlined, PlusOutlined } from "@ant-design/icons";
 import Search from "antd/lib/input/Search";
 import { TreeNode } from "antd/lib/tree-select";
+import { httpClient } from "axiosClient";
+import { pathApi } from "coreAuthent/constants/pathApi";
 
 
 
@@ -39,7 +41,7 @@ const data = [
   },
 ];
 
-const onChange = (e) => {
+const onCheckAllChange = (e) => {
   console.log(`checked = ${e.target.checked}`);
 };
 
@@ -86,6 +88,39 @@ function PostList() {
   const handleStatus = (value) => {
     console.log(`selected ${value}`);
   };
+
+  useEffect(() => {
+    
+    const handleGetProfiles = async () => {
+      try {
+        const response = await httpClient.get(pathApi.post.posts)
+        console.log("post POST response:", response)
+        if (
+          response &&
+          response.data &&
+          response.data.token &&
+          response.data.data &&
+          response.data.success
+        ) {
+          // notification.success({...renderContentNoti(statusNotification.login.LOGIN_SUCCESS)});
+        } else {
+          // notification.error({...renderContentNoti()});
+        }
+      } catch (error) {
+        if (
+          error &&
+          error.response &&
+          error.response.data &&
+          error.response.data.error &&
+          error.response.status !== 500 &&
+          error.response.status !== 401
+        ) {
+          // notification.error({...renderContentNoti(statusNotification.login.LOGIN_FAIL, error.response.data.error)});
+        }
+      }
+    }
+    handleGetProfiles()
+  }, [])
 
   return (
     <>
@@ -166,7 +201,7 @@ function PostList() {
             header={
               <Row className="header-list">
                 <Col className="header-list_item" span={1}>
-                  <Checkbox onChange={onChange}></Checkbox>
+                  <Checkbox onChange={onCheckAllChange}></Checkbox>
                 </Col>
                 <Col className="header-list_item" span={3}>
                   Ảnh bài viết
@@ -194,7 +229,7 @@ function PostList() {
             footer={
               <Row className="header-list">
                 <Col className="header-list_item" span={1}>
-                  <Checkbox onChange={onChange}></Checkbox>
+                  <Checkbox onChange={onCheckAllChange}></Checkbox>
                 </Col>
                 <Col className="header-list_item" span={3}>
                   Ảnh bài viết
@@ -230,7 +265,7 @@ function PostList() {
             renderItem={(item) => (
               <List.Item id="listUsers">
                 <Col className="" span={1}>
-                  <Checkbox onChange={onChange}></Checkbox>
+                  <Checkbox onChange={onCheckAllChange}></Checkbox>
                 </Col>
                 <Col className="" span={3}>
                   Ảnh bài viết

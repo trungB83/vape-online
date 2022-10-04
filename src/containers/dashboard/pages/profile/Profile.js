@@ -26,7 +26,7 @@ function Profile() {
         ? `Ngày tạo: ${userInfoLocal.ngay_tao}`
         : "Ngày tạo: --";
       const userGroup = userInfoLocal.ten_nhom_nhan_vien
-        ? `Tên nhóm nhân viên: ${userInfoLocal.ten_nhom_nhan_vien        }`
+        ? `Tên nhóm nhân viên: ${userInfoLocal.ten_nhom_nhan_vien}`
         : "Tên nhóm nhân viên: --";
       const userStatus = userInfoLocal.trang_thai
         ? `Trạng thái: ${userInfoLocal.trang_thai}`
@@ -72,7 +72,10 @@ function Profile() {
                   ? userInfo.ten_nhan_vien
                   : "Tên nhân viên"}
               </h1>
-              <Link to={`${routes.dashboard}${routes.adduser}`} className="Navto-addUser">
+              <Link
+                to={`${routes.dashboard}${routes.adduser}`}
+                className="Navto-addUser"
+              >
                 <Button className="ProfileDetail-editUser ant-btn-round">
                   Cập nhật thành viên
                 </Button>
@@ -86,7 +89,7 @@ function Profile() {
                   <GroupOutlined /> NHÓM TÀI KHOẢN
                 </div>
                 <div className="ProfileDetail-permision__data">
-                {userInfo && userInfo.ten_nhom_nhan_vien
+                  {userInfo && userInfo.ten_nhom_nhan_vien
                     ? userInfo.ten_nhom_nhan_vien
                     : "Học sinh"}
                 </div>
@@ -96,9 +99,7 @@ function Profile() {
                   <UsergroupAddOutlined /> GIỚI TÍNH
                 </div>
                 <div className="ProfileDetail-gender__data">
-                  {userInfo && userInfo.gioi_tinh
-                    ? userInfo.gioi_tinh
-                    : "Nam"}
+                  {userInfo && userInfo.gioi_tinh ? userInfo.gioi_tinh : "Nam"}
                 </div>
               </div>
               <div className="ProfileDetail-phone">

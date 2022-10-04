@@ -2,7 +2,9 @@ import { UnorderedListOutlined } from "@ant-design/icons";
 import { Button, Col, DatePicker, Form, Input, Radio, Row } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import TreeSelect, { TreeNode } from "antd/lib/tree-select";
+import routes from "coreAuthent/constants/routes";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./AddUser.scss";
 
 const genderOption = [
@@ -41,10 +43,12 @@ function AddUser() {
             <h1 className="pageAddUser_title">Thêm Mới Thành Viên</h1>
           </Col>
           <Col span={6}>
-            <Button className="pageAddUser_toList ant-btn-round">
-              <UnorderedListOutlined />
-              Danh sách thành viên
-            </Button>
+            <Link to={`${routes.dashboard}${routes.profilelist}`}>
+              <Button className="pageAddUser_toList ant-btn-round">
+                <UnorderedListOutlined />
+                Danh sách thành viên
+              </Button>
+            </Link>
           </Col>
         </Row>
         <Row gutter={16} className="ProfileDetail">
@@ -211,7 +215,7 @@ function AddUser() {
             <div className="ProfileDetail_right-inner">
               <div className="ProfileDetail_right-item">
                 <div className="ProfileDetail_right-item__title">
-                  <h2>Xuất bản</h2>
+                  <h2>Ảnh đại diện</h2>
                 </div>
                 <div className="ProfileDetail_right-item__content">
                   <Button className="btn-control red-6">Làm lại</Button>
@@ -241,10 +245,8 @@ function AddUser() {
                     treeDefaultExpandAll
                     onChange={handleStatus}
                   >
-                    <TreeNode value="Bị khóa" title="active"> 
-                    </TreeNode>
-                    <TreeNode value="Đang hoạt động" title="block"> 
-                    </TreeNode>
+                    <TreeNode value="Bị khóa" title="active"></TreeNode>
+                    <TreeNode value="Đang hoạt động" title="block"></TreeNode>
                   </TreeSelect>
                 </div>
               </div>
@@ -253,9 +255,7 @@ function AddUser() {
                   <h2>Xuất bản</h2>
                 </div>
                 <div className="ProfileDetail_right-item__content">
-                  <Button style={{ width: "100%" }}>
-                    Chọn file
-                  </Button>
+                  <Button style={{ width: "100%" }}>Chọn file</Button>
                 </div>
               </div>
             </div>

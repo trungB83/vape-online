@@ -1,5 +1,9 @@
-.page {
-    background: rgb(209, 209, 209);
-    color: black;
-    text-align: center;
+#listUsers {
+    .listUsers__avatar {
+        img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+        }
+    }
 }
