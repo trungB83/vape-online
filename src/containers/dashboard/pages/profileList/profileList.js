@@ -1,17 +1,18 @@
 import "./profileList.scss";
 import {
-  Avatar,
   Button,
-  Checkbox,
   Col,
   DatePicker,
+  Divider,
   Dropdown,
-  List,
   Menu,
   message,
+  Popconfirm,
+  Radio,
   Row,
   Select,
   Space,
+  Table,
   TreeSelect,
 } from "antd";
 import { Link } from "react-router-dom";
@@ -20,53 +21,8 @@ import React, { useEffect, useState } from "react";
 import { DownOutlined, PlusOutlined } from "@ant-design/icons";
 import Search from "antd/lib/input/Search";
 import { TreeNode } from "antd/lib/tree-select";
-import { getObjectLocal } from "coreAuthent/utils/localStorage";
-import { auth } from "coreAuthent/constants/constant";
-import { httpClient } from "axiosClient";
 import { pathApi } from "coreAuthent/constants/pathApi";
-
-const data = [
-  {
-    key: "1",
-    avatar: "https://joeschmoe.io/api/v1/random",
-    ho_va_ten: "John",
-    tuoi: 32,
-    dia_chi: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"],
-    trang_thai: "active",
-    ngay_tao: "2022"
-  },
-  {
-    key: "2",
-    avatar: "https://joeschmoe.io/api/v1/random",
-    ho_va_ten: "Mike",
-    tuoi: 32,
-    dia_chi: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"],
-    trang_thai: "active",
-    ngay_tao: "2022"
-  },
-  {
-    key: "3",
-    avatar: "https://joeschmoe.io/api/v1/random",
-    ho_va_ten: "Nick",
-    tuoi: 32,
-    dia_chi: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"],
-    trang_thai: "active",
-    ngay_tao: "2022"
-  },
-  {
-    key: "4",
-    avatar: "https://joeschmoe.io/api/v1/random",
-    ho_va_ten: "John",
-    tuoi: 32,
-    dia_chi: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"],
-    trang_thai: "active",
-    ngay_tao: "2022"
-  },
-];
+import { BASE_URL } from "config";
 
 const onCheckAllChange = (e) => {
   console.log(`checked = ${e.target.checked}`);
@@ -103,10 +59,14 @@ const menucheckbox = (
 
 const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    console.log(
+      `selectedRowKeys: ${selectedRowKeys}`,
+      "selectedRows: ",
+      selectedRows
+    );
   },
   getCheckboxProps: (record) => ({
-    disabled: record.name === 'Disabled User',
+    disabled: record.name === "Disabled User",
     // Column configuration not to be checked
     name: record.name,
   }),
@@ -116,6 +76,33 @@ const { Option } = Select;
 
 function ProfileList() {
   const [value, setValue] = useState();
+  const [gridData, SetGridData] = useState([]);
+  const [selectionType, setSelectionType] = useState("checkbox");
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = async () => {
+    const response = await fetch(`${BASE_URL}${pathApi.profile.profiles}`);
+    const jsonData = await response.json();
+    const data = jsonData.data;
+    SetGridData(data);
+  };
+  console.log("gridData", gridData);
+
+  const modifiedData = gridData.map(({ body, ...item }) => ({
+    ...item,
+    key: item.id,
+    comment: body,
+  }));
+  console.log("modifiedData", modifiedData);
+
+  const handleDelete = (value) => {
+    const dataSuorce = [...modifiedData];
+    const filteredData = dataSuorce.filter(item => item.id !== value.id)
+    SetGridData(filteredData)
+  }
+
 
   const handleCategories = (newValue) => {
     console.log(newValue);
@@ -125,39 +112,79 @@ function ProfileList() {
   const handleStatus = (value) => {
     console.log(`selected ${value}`);
   };
-  const [userInfo, setUserInfo] = useState(null);
-  
-  useEffect(() => {
-    const handleGetProfiles = async () => {
-      try {
-        const response = await httpClient.get(pathApi.profile.profiles)
-        console.log("profile POST response:", response)
-        if (
-          response &&
-          response.data &&
-          response.data.token &&
-          response.data.data &&
-          response.data.success
-        ) {
-          // notification.success({...renderContentNoti(statusNotification.login.LOGIN_SUCCESS)});
-        } else {
-          // notification.error({...renderContentNoti()});
-        }
-      } catch (error) {
-        if (
-          error &&
-          error.response &&
-          error.response.data &&
-          error.response.data.error &&
-          error.response.status !== 500 &&
-          error.response.status !== 401
-        ) {
-          // notification.error({...renderContentNoti(statusNotification.login.LOGIN_FAIL, error.response.data.error)});
-        }
-      }
+
+  const columns = [
+    {
+      title: "Id Group",
+      dataIndex: "nhom_nhan_vien_id",
+      align: "center",
+      editable: false,
+    },
+    {
+      title: "Ảnh đại diện",
+      dataIndex: "anh_dai_dien",
+      align: "center",
+      editable: false,
+    },
+    {
+      title: "Họ và tên",
+      dataIndex: "ten_nhan_vien",
+      align: "left",
+      editable: false,
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      align: "center",
+      editable: false,
+    },
+    {
+      title: "Địa chỉ",
+      dataIndex: "dia_chi",
+      align: "center",
+      editable: false,
+      filters: [
+        {
+          text: "Hà Nội",
+          value: "Hanoi",
+        },
+        {
+          text: "Lào Cai",
+          value: "Laocai",
+        },
+      ],
+      onFilter: (value, record) => record.address.indexOf(value) === 0,
+    },
+    {
+      title: "Tuổi",
+      dataIndex: "tuoi",
+      align: "center",
+      editable: true,
+      defaultSortOrder: "descend",
+      sorter: (a, b) => a.age - b.age,
+    },
+    {
+      title: "Ngày tạo",
+      dataIndex: "ngay_tao",
+      align: "center",
+      editable: false,
+    },
+    {
+      title: "Hành động",
+      dataIndex: "action",
+      align: "center",
+      render: (_, record) => modifiedData.length > 1 ? (
+        <Popconfirm 
+          title="Xác nhận xóa ?"
+          onConfirm={() => handleDelete(record)}
+        >
+          <Button type="primary" danger>
+            Xóa
+          </Button>
+        </Popconfirm>
+      ): null,
     }
-    handleGetProfiles()
-  }, [])
+  ];
 
   return (
     <>
@@ -236,99 +263,32 @@ function ProfileList() {
           </Col>
         </Row>
         <div>
-          <List
-            header={
-              <Row className="header-list">
-                <Col className="header-list_item" span={1}>
-                  <Checkbox onChange={onCheckAllChange}></Checkbox>
-                </Col>
-                <Col className="header-list_item" span={3}>
-                  Ảnh người dùng
-                </Col>
-                <Col className="header-list_item text-left" span={6}>
-                  Tên người dùng
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Tuổi
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Địa chỉ
-                </Col>
-                <Col className="header-list_item text-left" span={2}>
-                  Tags
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Trạng thái
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Ngày tạo
-                </Col>
-              </Row>
-            }
-            footer={
-              <Row className="header-list">
-                <Col className="header-list_item" span={1}>
-                  <Checkbox onChange={onCheckAllChange}></Checkbox>
-                </Col>
-                <Col className="header-list_item" span={3}>
-                  Ảnh người dùng
-                </Col>
-                <Col className="header-list_item text-left" span={6}>
-                  Tên người dùng
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Tuổi
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Địa chỉ
-                </Col>
-                <Col className="header-list_item text-left" span={2}>
-                  Tags
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Trạng thái
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Ngày tạo
-                </Col>
-              </Row>
-            }
+          <Radio.Group
+            onChange={({ target: { value } }) => {
+              setSelectionType(value);
+            }}
+            value={selectionType}
+          >
+            <Radio value="checkbox">Checkbox</Radio>
+            <Radio value="radio">radio</Radio>
+          </Radio.Group>
+
+          <Divider />
+
+          <Table
+            rowSelection={{
+              type: selectionType,
+              ...rowSelection,
+            }}
             itemLayout="horizontal"
             pagination={{
               onChange: (page) => {
                 console.log(page);
               },
-              pageSize: 3,
+              pageSize: 10,
             }}
-            dataSource={data}
-            renderItem={(item) => (
-              <List.Item id="listUsers">
-                <Col className="" span={1}>
-                  <Checkbox onChange={onCheckAllChange}></Checkbox>
-                </Col>
-                <Col className="listUsers__avatar" span={3}>
-                  <img  src={item.avatar}  />
-                </Col>
-                <Col className="text-left" span={6}>
-                  {item.ho_va_ten}
-                </Col>
-                <Col className="text-left" span={3}>
-                  {item.tuoi}
-                </Col>
-                <Col className="text-left" span={3}>
-                  {item.dia_chi}
-                </Col>
-                <Col className="text-left" span={2}>
-                  {item.tags}
-                </Col>
-                <Col className="text-left" span={3}>
-                  {item.trang_thai}
-                </Col>
-                <Col className="text-left" span={3}>
-                  {item.ngay_tao}
-                </Col>
-              </List.Item>
-            )}
+            columns={columns}
+            dataSource={modifiedData}
           />
         </div>
       </div>

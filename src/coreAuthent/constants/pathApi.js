@@ -4,9 +4,9 @@ export const pathApi = {
         regiter: 'user/regUser'
     },
     post: {
-        posts: 'posts'
+        posts: '/posts'
     },
     profile: {
-        profiles: 'users'
+        profiles: '/users'
     }
 }

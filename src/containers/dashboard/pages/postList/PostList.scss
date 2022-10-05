@@ -18,6 +18,12 @@
             float: right;
             &:hover {
                 color: #fff;
+                background: #001529;
+            }
+            a{
+                &:hover{
+                    color: white;
+                }
             }
         }
         
@@ -33,22 +39,5 @@
             justify-content: center;
         }
     }
-    .ant-spin-nested-loading {
-        border:1px solid #ccd0d4;
-        .ant-list-items {
-            .ant-list-item {
-                border-bottom: 1px dashed #2FA2C1;
-                &:hover{
-                    background: #ffffffcc;
-                    transform: all 0.2s;
-                }
-                .ant-checkbox-wrapper {
-                    width: 100%;
-                    display: flex;
-                    justify-content: center;
-                }
-            }
-        }
 
-    }
 }

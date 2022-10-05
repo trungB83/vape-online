@@ -1,15 +1,15 @@
 import {
   Button,
-  Checkbox,
   Col,
   DatePicker,
   Dropdown,
-  List,
   Menu,
   message,
+  Popconfirm,
   Row,
   Select,
   Space,
+  Table,
   TreeSelect,
 } from "antd";
 import "./PostList.scss";
@@ -19,31 +19,8 @@ import React, { useEffect, useState } from "react";
 import { DownOutlined, PlusOutlined } from "@ant-design/icons";
 import Search from "antd/lib/input/Search";
 import { TreeNode } from "antd/lib/tree-select";
-import { httpClient } from "axiosClient";
 import { pathApi } from "coreAuthent/constants/pathApi";
-
-
-
-
-
-const data = [
-  {
-    title: "Ant Design Title 1",
-  },
-  {
-    title: "Ant Design Title 2",
-  },
-  {
-    title: "Ant Design Title 3",
-  },
-  {
-    title: "Ant Design Title 4",
-  },
-];
-
-const onCheckAllChange = (e) => {
-  console.log(`checked = ${e.target.checked}`);
-};
+import { BASE_URL } from "config";
 
 const onSearch = (value) => console.log(value);
 
@@ -74,11 +51,55 @@ const menucheckbox = (
   />
 );
 
+const rowSelection = {
+  onChange: (selectedRowKeys, selectedRows) => {
+    console.log(
+      `selectedRowKeys: ${selectedRowKeys}`,
+      "selectedRows: ",
+      selectedRows
+    );
+  },
+  getCheckboxProps: (record) => ({
+    disabled: record.name === "Disabled User",
+    // Column configuration not to be checked
+    name: record.name,
+  }),
+};
+
 const { Option } = Select;
 
 function PostList() {
-
+  const [gridData, SetGridData] = useState([]);
   const [value, setValue] = useState();
+  const [selectionType, setSelectionType] = useState("checkbox");
+  const [editingKey, setEditingKey] = useState("");
+  const [editRow, setEditRow] = useState(false);
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = async () => {
+    const response = await fetch(`${BASE_URL}${pathApi.post.posts}`);
+    const jsonData = await response.json();
+    const data = jsonData.data;
+    SetGridData(data);
+  };
+  console.log("gridData", gridData);
+  
+  const modifiedData = gridData.map(({ body, ...item }) => ({
+    ...item,
+    key: item.id,
+    comment: body,
+  }));
+  console.log("modifiedData", modifiedData);
+
+  // const handleDelete = (value) => {
+  //   const dataSuorce = [...modifiedData];
+  //   const filteredData = dataSuorce.filter(item => item.id !== value.id)
+  //   SetGridData(filteredData)
+  // }
+
 
   const handleCategories = (newValue) => {
     console.log(newValue);
@@ -89,38 +110,124 @@ function PostList() {
     console.log(`selected ${value}`);
   };
 
-  useEffect(() => {
-    
-    const handleGetProfiles = async () => {
-      try {
-        const response = await httpClient.get(pathApi.post.posts)
-        console.log("post POST response:", response)
-        if (
-          response &&
-          response.data &&
-          response.data.token &&
-          response.data.data &&
-          response.data.success
-        ) {
-          // notification.success({...renderContentNoti(statusNotification.login.LOGIN_SUCCESS)});
-        } else {
-          // notification.error({...renderContentNoti()});
-        }
-      } catch (error) {
-        if (
-          error &&
-          error.response &&
-          error.response.data &&
-          error.response.data.error &&
-          error.response.status !== 500 &&
-          error.response.status !== 401
-        ) {
-          // notification.error({...renderContentNoti(statusNotification.login.LOGIN_FAIL, error.response.data.error)});
-        }
-      }
+  const columns = [
+    {
+      title: "Id",
+      dataIndex: "tin_tuc_id",
+      align: "center",
+      editable: false,
+    },
+    // {
+    //   title: "Ảnh đại diện",
+    //   dataIndex: <img src="anh_dai_dien" width={100} alt="" />,
+    //   align: "center",
+    //   editable: false,
+    // },
+    {
+      title: "Tiêu đề",
+      dataIndex: "tieu_de",
+      align: "left",
+      editable: false,
+    },
+    {
+      title: "Nội dung",
+      dataIndex: "noi_dung",
+      align: "center",
+      editable: true,
+      width: "40%",
+    },
+    {
+      title: "Mô tả",
+      dataIndex: "mo_ta",
+      align: "center",
+      editable: true,
+    },
+    {
+      title: "Tác giả",
+      dataIndex: "nguoi_tao",
+      align: "center",
+      editable: true,
+      defaultSortOrder: "descend",
+      sorter: (a, b) => a.age - b.age,
+    },
+    {
+      title: "Ngày tạo",
+      dataIndex: "ngay_tao",
+      align: "center",
+      editable: false,
+    },
+    {
+      title: "Trạng thái",
+      dataIndex: "trang_thai",
+      align: "center",
+      editable: false,
+    },
+    {
+      title: "Hành động",
+      dataIndex: "action",
+      align: "center",
+      render: (_, record) =>
+        modifiedData.length > 1 ? (
+          <Space>
+            <Popconfirm
+              title="Xác nhận xóa ?"
+              onConfirm={() => record}
+              // handleDelete
+            >
+              <Button type="primary" danger>
+                Xóa
+              </Button>
+            </Popconfirm>
+            {editRow ? (
+              <span>
+                <Button
+                  onClick={(e) => console.log(e)}
+                  type="primary"
+                  style={{ marginBottom: 8 }}
+                >
+                  Lưu
+                </Button>
+                <Popconfirm
+                  title="Hủy chỉnh sửa?"
+                  onConfirm={() => setEditRow(false)}
+                >
+                  <Button type="primary" danger>
+                    Hủy
+                  </Button>
+                </Popconfirm>
+              </span>
+            ) : (
+              <Button 
+                onClick={() => setEditRow(true)} 
+                type="primary"
+              >
+                Sửa
+              </Button>
+            )}
+          </Space>
+        ) : null,
+    },
+  ];
+  const isEditing = (record) => {
+    return record.key === editingKey
+  }
+
+  const mergeColumns = columns.map((col) => {
+    if(!col.editable) {
+      return col;
     }
-    handleGetProfiles()
-  }, [])
+    else {
+      return {
+        ...col,
+        onCell: (record) => ({
+          record,
+          dataIndex: col.dataIndex,
+          title: col.title,
+          editing: isEditing(record),
+        })
+      } 
+    }
+  })
 
   return (
     <>
@@ -191,105 +298,26 @@ function PostList() {
           </Col>
           <Col className="right-actions" span={12}>
             <Button className="button-add-post ant-btn-round">
-            <PlusOutlined />
+              <PlusOutlined />
               <Link to={routes.posts}>Thêm mới bài viết</Link>
             </Button>
           </Col>
         </Row>
         <div>
-          <List
-            header={
-              <Row className="header-list">
-                <Col className="header-list_item" span={1}>
-                  <Checkbox onChange={onCheckAllChange}></Checkbox>
-                </Col>
-                <Col className="header-list_item" span={3}>
-                  Ảnh bài viết
-                </Col>
-                <Col className="header-list_item text-left" span={6}>
-                  Tiêu đề
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Nhóm bài viết
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Tin nổi bật
-                </Col>
-                <Col className="header-list_item text-left" span={2}>
-                  Tin mới
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Trạng thái
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Ngày tạo
-                </Col>
-              </Row>
-            }
-            footer={
-              <Row className="header-list">
-                <Col className="header-list_item" span={1}>
-                  <Checkbox onChange={onCheckAllChange}></Checkbox>
-                </Col>
-                <Col className="header-list_item" span={3}>
-                  Ảnh bài viết
-                </Col>
-                <Col className="header-list_item text-left" span={6}>
-                  Tiêu đề
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Nhóm bài viết
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Tin nổi bật
-                </Col>
-                <Col className="header-list_item text-left" span={2}>
-                  Tin mới
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Trạng thái
-                </Col>
-                <Col className="header-list_item text-left" span={3}>
-                  Ngày tạo
-                </Col>
-              </Row>
-            }
+          <Table
+            rowSelection={{
+              type: selectionType,
+              ...rowSelection,
+            }}
             itemLayout="horizontal"
             pagination={{
               onChange: (page) => {
                 console.log(page);
               },
-              pageSize: 3,
+              pageSize: 10,
             }}
-            dataSource={data}
-            renderItem={(item) => (
-              <List.Item id="listUsers">
-                <Col className="" span={1}>
-                  <Checkbox onChange={onCheckAllChange}></Checkbox>
-                </Col>
-                <Col className="" span={3}>
-                  Ảnh bài viết
-                </Col>
-                <Col className="text-left" span={6}>
-                  Tiêu đề
-                </Col>
-                <Col className="text-left" span={3}>
-                  Nhóm bài viết
-                </Col>
-                <Col className="text-left" span={3}>
-                  Tin nổi bật
-                </Col>
-                <Col className="text-left" span={2}>
-                  Tin mới
-                </Col>
-                <Col className="text-left" span={3}>
-                  Trạng thái
-                </Col>
-                <Col className="text-left" span={3}>
-                  Ngày tạo
-                </Col>
-              </List.Item>
-            )}
+            columns={columns}
+            dataSource={modifiedData}
           />
         </div>
       </div>
