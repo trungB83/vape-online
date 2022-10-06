@@ -311,6 +311,7 @@ function PostList() {
             }}
             columns={columns}
             dataSource={modifiedData}
+            rowKey='tin_tuc_id'
           />
         </div>
       </div>
