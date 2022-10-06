@@ -130,16 +130,9 @@ function PostList() {
       editable: false,
     },
     {
-      title: "Nội dung",
-      dataIndex: "noi_dung",
-      align: "center",
-      editable: true,
-      width: "40%",
-    },
-    {
-      title: "Mô tả",
-      dataIndex: "mo_ta",
-      align: "center",
+      title: "Nhóm bài viết",
+      dataIndex: "nhom_tin_tuc_id",
+      align: "left",
       editable: true,
     },
     {
@@ -299,7 +292,7 @@ function PostList() {
           <Col className="right-actions" span={12}>
             <Button className="button-add-post ant-btn-round">
               <PlusOutlined />
-              <Link to={routes.posts}>Thêm mới bài viết</Link>
+              <Link to={`${routes.dashboard}${routes.addpost}`}>Thêm mới bài viết</Link>
             </Button>
           </Col>
         </Row>

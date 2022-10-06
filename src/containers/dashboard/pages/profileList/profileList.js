@@ -24,9 +24,6 @@ import { TreeNode } from "antd/lib/tree-select";
 import { pathApi } from "coreAuthent/constants/pathApi";
 import { BASE_URL } from "config";
 
-const onCheckAllChange = (e) => {
-  console.log(`checked = ${e.target.checked}`);
-};
 
 const onSearch = (value) => console.log(value);
 

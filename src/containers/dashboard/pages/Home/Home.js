@@ -66,9 +66,9 @@ function Home() {
       editable: false,
     },
     {
-      title: "Mô tả",
-      dataIndex: "mo_ta",
-      align: "center",
+      title: "Nhóm bài viết",
+      dataIndex: "nhom_tin_tuc_id",
+      align: "left",
       editable: true,
     },
     {

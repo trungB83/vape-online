@@ -7,6 +7,7 @@ const routes = {
     posts: '/posts',
     profile: '/profile',
     adduser: '/adduser',
+    addpost: '/addpser',
     profilelist: '/profile-list',
     setting: '/setting'
     

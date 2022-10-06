@@ -7,6 +7,7 @@ export const pathApi = {
         posts: '/posts'
     },
     profile: {
-        profiles: '/users'
+        profiles: '/users',
+        addProfile: '/user'
     }
 }

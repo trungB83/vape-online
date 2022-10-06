@@ -17,6 +17,7 @@ import ProfileListDashBoard from "containers/dashboard/pages/profileList/profile
 import SettingDashBoard from "containers/dashboard/pages/setting/Setting";
 import HomeDashBoard from "containers/dashboard/pages/Home/Home";
 import AddUser from "containers/dashboard/pages/profile/compoent/addUser/AddUser";
+import AddPost from "containers/dashboard/pages/postList/compoent/addUser/AddPost";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
               <Route path="profile" element={<ProfileDashBoard />} />
               <Route path="adduser" element={<AddUser />} />
               <Route path="posts" element={<PostDashBoard />} />
+              <Route path="addpser" element={<AddPost />} />
               <Route path="setting" element={<SettingDashBoard />} />
               <Route path="profile-list" element={<ProfileListDashBoard />} />
             </Route>

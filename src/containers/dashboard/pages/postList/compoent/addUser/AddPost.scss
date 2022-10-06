@@ -1,0 +1,68 @@
+.first-row {
+  margin-bottom: 1rem;
+
+  h1 {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #b2afaf;
+  }
+  .pageAddUser_toList {
+    color: #fff;
+    background: #2fa2c1;
+    border-color: #5aa9d0;
+    padding: 0 5rem;
+  }
+}
+
+.ProfileDetail {
+  .ProfileDetail_left {
+    .ProfileDetail_left-inner {
+      background-color: white;
+      min-height: 300px;
+      padding: 1rem;
+      .ant-form-item {
+        .ant-form-item-row {
+            flex-direction: column;
+            .ant-form-item-label {
+                text-align: left;
+            }
+        }
+      }
+    }
+  }
+  .ProfileDetail_right {
+    .ProfileDetail_right-inner {
+      min-height: 300px;
+      .ProfileDetail_right-item {
+        background: white;
+        margin: 0 5px 15px 5px;
+
+        min-height: 100px;
+        .ProfileDetail_right-item__title {
+          text-align: center;
+          padding: 4px 0 ;
+          border: 1px solid #CCD0D4;
+        }
+        .ProfileDetail_right-item__content {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px;
+          .btn-control {
+            padding: 4px 15%;
+          }
+          .red-6 {
+            background: #ff4d4f;
+            color: white;
+          }
+          .green-6 {
+            background-color: #2fa2c1;
+            color: white;
+          }
+          .ant-picker {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

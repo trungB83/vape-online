@@ -58,10 +58,10 @@ function homeContent(props) {
                 <p>
                   <strong>
                     Với chất lượng đã được khẳng định cùng mức giá cạnh tranh
-                    trên thị trường,{" "}
+                    trên thị trường,
                     <a href="/" className="blue-link">
                       <strong>thuốc lá IQOS</strong>
-                    </a>{" "}
+                    </a>
                     đã và đang trở thành sự lựa chọn hàng đầu của đông đảo khách
                     hàng khi có nhu cầu về sản phẩm thuốc lá IQOS và máy hút
                     thuốc IQOS.

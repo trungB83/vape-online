@@ -1,6 +1,7 @@
 import {
-  DatabaseFilled,
   DownOutlined,
+  FileAddOutlined,
+  FileSearchOutlined,
   HomeFilled,
   LogoutOutlined,
   SettingFilled,
@@ -98,18 +99,24 @@ const DashBoard = () => {
                 Trang chủ
               </Link>
             </Menu.Item>
-            <Menu.Item icon={<DatabaseFilled />} key={"2"}>
+            <Menu.Item icon={<FileSearchOutlined />} key={"2"}>
               <Link to={`${routes.dashboard}${routes.posts}`}>Bài viết</Link>
             </Menu.Item>
-            <Menu.Item icon={<UserOutlined />} key={"3"}>
+            <Menu.Item icon={<FileAddOutlined />} key={"3"}>
+              <Link defaultChecked={true} to={`${routes.dashboard}${routes.adduser}`}>
+                Thêm bài viết
+              </Link>
+            </Menu.Item>
+            <Menu.Item icon={<UserOutlined />} key={"4"}>
               <Link to={`${routes.dashboard}${routes.profilelist}`}>Người dùng</Link>
             </Menu.Item>
-            <Menu.Item icon={<UserAddOutlined />} key={"4"}>
+            <Menu.Item icon={<UserAddOutlined />} key={"5"}>
               <Link defaultChecked={true} to={`${routes.dashboard}${routes.adduser}`}>
                 Thêm người dùng
               </Link>
             </Menu.Item>
-            <Menu.Item icon={<SettingFilled />} key={"5"}>
+            
+            <Menu.Item icon={<SettingFilled />} key={"6"}>
               <Link to={`${routes.dashboard}${routes.setting}`}>Cài đặt</Link>
             </Menu.Item>
           </Menu>
