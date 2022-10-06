@@ -79,9 +79,11 @@ const navigate = useNavigate()
         mat_khau: values.mat_khau.trim(),
         dia_chi: values.dia_chi.trim(),
         chuc_vu: values.chuc_vu.trim(),
+        don_vi: values.don_vi.trim(),
         so_dien_thoai: values.so_dien_thoai.trim(),
-        gioi_tinh: values.gioi_tinh.trim(),
-        trang_thai: values.trang_thai.trim()
+        gioi_tinh: values.gioi_tinh,
+        trang_thai: values.trang_thai.trim(),
+        gioi_thieu:values.trang_thai.trim(),
       }
       handleRegister(body)
     } else {
@@ -92,7 +94,7 @@ const navigate = useNavigate()
   const handleRegister = async body => {
     setIsLoading(true)
     try {
-      const response = await httpClient.post(pathApi.auth.regiter, body)
+      const response = await httpClient.post(pathApi.profile.addProfile, body)
       if (
         response &&
         response.data &&
@@ -101,7 +103,7 @@ const navigate = useNavigate()
         response.data.success
       ) {
         setIsLoading(false)
-        navigate(routes.login)
+        navigate(`${routes.dashboard}${routes.profilelist}`)
         notification.success({
           ...renderContentNoti(statusNotification.register.REGISTER_SUCCESS)
         })
@@ -158,7 +160,7 @@ const navigate = useNavigate()
                   <Col span={12}>
                     <Form.Item
                       label="Họ và tên"
-                      name="ten_dang_nhap"
+                      name="ten_nhan_vien"
                       rules={[
                         {
                           required: true,
@@ -215,7 +217,7 @@ const navigate = useNavigate()
                   <Col span={12}>
                     <Form.Item
                       label="Nơi làm việc"
-                      name="noi_lam_viec"
+                      name="don_vi"
                       rules={[
                         {
                           required: false,
@@ -228,7 +230,7 @@ const navigate = useNavigate()
 
                     <Form.Item
                       label="Công việc"
-                      name="cong_viec"
+                      name="chuc_vu"
                       rules={[
                         {
                           required: false,
