@@ -8,16 +8,16 @@ import {
   UserAddOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import Logo from "assets/images/logo-giuseart.png";
+import Logo from "../../assets/images/logogiuseart.png";
 import "./DashBoard.scss";
 import { Dropdown, Layout, Menu, Modal, Space } from "antd";
 import React, { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import routes from "core-authent/constants/routes";
-import { clearLocal, getObjectLocal } from "core-authent/utils/localStorage";
+import routes from "../../core-authent/constants/routes";
+import { clearLocal, getObjectLocal } from "../../core-authent/utils/localStorage";
 import avatarDefault from "assets/images/avatar.png";
-import { auth } from "core-authent/constants/constant";
-import { BASE_URL } from "config";
+import { auth } from "../../core-authent/constants/constant";
+import { BASE_URL } from "../../config";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -53,33 +53,34 @@ const DashBoard = () => {
     clearLocal();
   };
 
-  const itemsUserLogin=[
-    {
-      label: (
-        <Link to={`${routes.dashboard}${routes.profile}`}>
-          Trang cá nhân
-        </Link>
-      ),
-      key: "0",
-      icon: <UserOutlined />,
-    },
-    {
-      type: "divider",
-    },
-    {
-      label: (
-        <p className="btn_logout" onClick={showModalLogout}>
-          Đăng xuất
-        </p>
-      ),
-      key: "1",
-      icon: <LogoutOutlined />,
-    },
-  ]
 
   const menu = (
     <Menu
-      items={itemsUserLogin}
+      items={
+        [
+          {
+            label: (
+              <Link to={`${routes.dashboard}${routes.profile}`}>
+                Trang cá nhân
+              </Link>
+            ),
+            key: "0",
+            icon: <UserOutlined />,
+          },
+          {
+            type: "divider",
+          },
+          {
+            label: (
+              <p className="btn_logout" onClick={showModalLogout}>
+                Đăng xuất
+              </p>
+            ),
+            key: "1",
+            icon: <LogoutOutlined />,
+          },
+        ]
+      }
     />
   );
 

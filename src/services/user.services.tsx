@@ -1,6 +1,6 @@
 import axios from "axios";
 import { get } from "lodash";
-import { API_URL } from "config";
+import { API_URL } from "../config";
 import { getHeaders } from "./common.service";
 
 export const fetchUser = async () => {

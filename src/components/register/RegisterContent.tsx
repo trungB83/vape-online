@@ -2,18 +2,19 @@ import "./registerContent.scss";
 import { Button, Checkbox, Form, Input, notification } from "antd";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { statusNotification } from "core-authent/constants/constant";
-import { pathApi } from "core-authent/constants/pathApi";
-import routes from "core-authent/constants/routes";
-import { renderContentNoti } from "core-authent/utils/utils";
-import { httpClient } from "axiosClient";
+import { statusNotification } from "../../core-authent/constants/constant";
+import { pathApi } from "../../core-authent/constants/pathApi";
+import routes from "../../core-authent/constants/routes";
+import { renderContentNoti } from "../../core-authent/utils/utils";
+import { httpClient } from "../../axiosClient";
+import { IInforUserRegister } from "./../../core-authent/models/model";
 
 function RegisterContent() {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
-  const onFinish = (values) => {
+  const onFinish = (values: any) => {
     if (
       values &&
       values.ten_tai_khoan &&
@@ -35,9 +36,9 @@ function RegisterContent() {
     }
   };
 
-  const onFinishFailed = (errorInfo) => {};
+  const onFinishFailed = (errorInfo: any) => {};
 
-  const handleRegister = async (body) => {
+  const handleRegister = async (body: IInforUserRegister) => {
     setIsLoading(true);
     try {
       const response = await httpClient.post(pathApi.auth.regiter, body);
@@ -57,7 +58,7 @@ function RegisterContent() {
         setIsLoading(false);
         notification.success({ ...renderContentNoti() });
       }
-    } catch (error) {
+    } catch (error: any) {
       setIsLoading(false);
       if (
         error &&
@@ -181,7 +182,13 @@ function RegisterContent() {
             span: 16,
           }}
         >
-          <Button type="primary" htmlType="submit" onClick={handleRegister}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            size="large"
+            loading={isLoading}
+            block
+          >
             Đăng ký
           </Button>
         </Form.Item>
@@ -192,7 +199,7 @@ function RegisterContent() {
             span: 16,
           }}
         >
-          <Button type="secondary" htmlType="submit" loading={isLoading} block>
+          <Button htmlType="submit" loading={isLoading} block>
             <Link to={routes.login}>Đăng nhập</Link>
           </Button>
         </Form.Item>

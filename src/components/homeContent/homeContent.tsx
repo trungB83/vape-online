@@ -1,14 +1,14 @@
 import React from "react";
 import "./homeContent.scss";
 import { Link } from "react-router-dom";
-import sliderImg from "assets/images/slider.jpg";
-import icon1 from "assets/images/icon-1.png";
-import icon3 from "assets/images/icon3.png";
-import icon4 from "assets/images/icon-4.png";
-import prductImg from "assets/images/IQOS-BLUE-gia-ban-hcm-0.jpg";
-import chonkDescrpitionImg from "assets/images/cuahang.jpg";
+import sliderImg from "../../assets/images/slider.jpg";
+import icon1 from "../../assets/images/icon-1.png";
+import icon3 from "../../assets/images/icon3.png";
+import icon4 from "../../assets/images/icon-4.png";
+import prductImg from "../../assets/images/IQOS-BLUE-gia-ban-hcm-0.jpg";
+import chonkDescrpitionImg from "../../assets/images/cuahang.jpg";
 
-function homeContent(props) {
+function homeContent(props: any) {
   return (
     <>
       <section className="slider">

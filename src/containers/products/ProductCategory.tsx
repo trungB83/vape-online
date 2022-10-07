@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "components/header/Header";
-import Footer from "components/footer/Footer";
-import ProductCategories from "components/productCategory/productCategory";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
+import ProductCategories from "../../components/productCategory/productCategory";
 
 function ProductCategory() {
   return (

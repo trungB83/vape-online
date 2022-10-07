@@ -1,8 +1,13 @@
 import Context from "./Context";
-import {useReducer} from 'react';
+import {ReactNode, useReducer} from 'react';
 import reducer, { initState } from "./reducer";
 
-function Provider ({children}) {
+interface Props {
+    children?: ReactNode
+    // any props that come into the component
+}
+
+function Provider ({children}: Props) {
     const [state, dispatch] = useReducer(
         reducer,
         initState

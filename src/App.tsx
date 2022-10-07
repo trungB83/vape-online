@@ -1,42 +1,42 @@
 import React, { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { StoreProvider } from "store";
+import { StoreProvider } from "../src/store";
 
-const Home = lazy(() => import("containers/home/Home"));
+const Home = lazy(() => import("../src/components/header/Header"));
 
-const Contact = React.lazy(() => import("containers/contact/Contact"));
+const Contact = React.lazy(() => import("../src/containers/contact/Contact"));
 const ProductDetail = React.lazy(() =>
-  import("containers/products/ProductDetail")
+  import("../src/containers/products/ProductDetail")
 );
 const ProductCategory = React.lazy(() =>
-  import("containers/products/ProductCategory")
+  import("../src/containers/products/ProductCategory")
 );
-const PostList = React.lazy(() => import("containers/post/PostList"));
-const PostDetail = React.lazy(() => import("containers/post/PostDetails"));
-const Login = React.lazy(() => import("containers/login/Login"));
-const Register = React.lazy(() => import("containers/register/Register"));
-const FogotPass = React.lazy(() => import("containers/forgotPass/fogotPass"));
-const DashBoard = React.lazy(() => import("containers/dashboard/DashBoard"));
+const PostList = React.lazy(() => import("../src/containers/post/PostList"));
+const PostDetail = React.lazy(() => import("../src/containers/post/PostDetails"));
+const Login = React.lazy(() => import("../src/containers/login/Login"));
+const Register = React.lazy(() => import("../src/containers/register/Register"));
+const FogotPass = React.lazy(() => import("../src/containers/forgotPass/fogotPass"));
+const DashBoard = React.lazy(() => import("../src/containers/dashboard/DashBoard"));
 const PostDashBoard = React.lazy(() =>
-  import("containers/dashboard/pages/postList/PostList")
+  import("../src/containers/dashboard/pages/postList/PostList")
 );
 const ProfileListDashBoard = React.lazy(() =>
-  import("containers/dashboard/pages/profileList/profileList")
+  import("../src/containers/dashboard/pages/profileList/profileList")
 );
 const SettingDashBoard = React.lazy(() =>
-  import("containers/dashboard/pages/setting/Setting")
+  import("../src/containers/dashboard/pages/setting/Setting")
 );
 const HomeDashBoard = React.lazy(() =>
-  import("containers/dashboard/pages/Home/Home")
+  import("../src/containers/dashboard/pages/Home/Home")
 );
 const AddUser = React.lazy(() =>
-  import("containers/dashboard/pages/profile/compoent/addUser/AddUser")
+  import("../src/containers/dashboard/pages/profile/compoent/addUser/AddUser")
 );
 const AddPost = lazy(() =>
-  import("containers/dashboard/pages/postList/compoent/addUser/AddPost")
+  import("../src/containers/dashboard/pages/postList/compoent/addUser/AddPost")
 );
 const ProfileDashBoard = React.lazy(() =>
-  import("containers/dashboard/pages/profile/Profile")
+  import("../src/containers/dashboard/pages/profile/Profile")
 );
 
 function App() {

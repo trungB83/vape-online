@@ -1,10 +1,10 @@
 import axios from "axios";
 import { get } from "lodash";
-import { API_URL } from "config";
+import { API_LOCAL_URL } from "../config";
 import { getHeaders } from "./common.service";
 
-export const fetchPosts = async () => {
-  const url = `${API_URL}/api/posts`;
+export const fetchProducts = async () => {
+  const url = `${API_LOCAL_URL}/products`;
   const options = {
     url,
     method: "get",
@@ -14,15 +14,13 @@ export const fetchPosts = async () => {
   return get(result, "data", {});
 };
 
-export const fetchPostCates = async () => {
-  const url = `${API_URL}/api/post-categories`;
+export const fetchProductCates = async () => {
+  const url = `${API_LOCAL_URL}/productCategories`;
   const options = {
     url,
     method: "get",
     headers: getHeaders(),
   };
-  
   const result = await axios(options);
   return get(result, "data", {});
 };
-

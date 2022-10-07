@@ -2,19 +2,26 @@ import "./loginContent.scss";
 import { Button, Checkbox, Form, Input, notification } from "antd";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, statusNotification } from "core-authent/constants/constant";
-import { pathApi } from "core-authent/constants/pathApi";
-import routes from "core-authent/constants/routes";
-import { renderContentNoti } from "core-authent/utils/utils";
+import {
+  auth,
+  statusNotification,
+} from "../../core-authent/constants/constant";
+import { pathApi } from "../../core-authent/constants/pathApi";
+import routes from "../../core-authent/constants/routes";
+import { renderContentNoti } from "../../core-authent/utils/utils";
 import { CheckCircleFilled, CloseCircleFilled } from "@ant-design/icons";
-import { httpClient } from "axiosClient";
-import { setLocal, setObjectLocal } from "core-authent/utils/localStorage";
+import { httpClient } from "../../axiosClient";
+import {
+  setLocal,
+  setObjectLocal,
+} from "../../core-authent/utils/localStorage";
+import { IInforUser } from "../../core-authent/models/model";
 
 function LoginContent() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const onFinish = (values) => {
+  const onFinish = (values: IInforUser): void => {
     if (values && values.ten_tai_khoan && values.mat_khau) {
       const body = {
         ten_tai_khoan: values.ten_tai_khoan.trim(),
@@ -26,9 +33,9 @@ function LoginContent() {
     }
   };
 
-  const onFinishFailed = (errorInfo) => {};
+  const onFinishFailed = (errorInfo: any) => {};
 
-  const openNotification = (content) => {
+  const openNotification = (content: any) => {
     notification.open({
       message: content.message,
       description: content.description,
@@ -36,10 +43,9 @@ function LoginContent() {
     });
   };
 
-  const handleLogin = async (body) => {
+  const handleLogin = async (body: IInforUser) => {
     setIsLoading(true);
     try {
-      let contentNoti;
       const response = await httpClient.post(pathApi.auth.login, body);
       if (
         response &&
@@ -49,42 +55,32 @@ function LoginContent() {
         response.data.success
       ) {
         setIsLoading(false);
-        contentNoti = {
-          ...renderContentNoti(statusNotification.login.LOGIN_SUCCESS),
-          icon: <CheckCircleFilled style={{ color: "#52c41a" }} />,
-        };
         setLocal(auth.TOKEN, response.data.token);
         setObjectLocal(auth.USER_INFO, response.data.data);
         navigate(routes.dashboard);
-        openNotification(contentNoti);
+        notification.success({
+          ...renderContentNoti(statusNotification.login.LOGIN_SUCCESS),
+        });
       } else {
         setIsLoading(false);
-        contentNoti = {
-          ...renderContentNoti(),
-          icon: <CloseCircleFilled style={{ color: "#ff4d4f" }} />,
-        };
-        openNotification(contentNoti);
+        notification.error({ ...renderContentNoti() });
       }
-    } catch (error) {
+    } catch (error: any) {
       setIsLoading(false);
-      let contentNoti;
       if (
         error &&
         error.response &&
         error.response.data &&
-        error.response.data.error
+        error.response.data.error &&
+        error.response.status !== 500 &&
+        error.response.status !== 401
       ) {
-        contentNoti = {
-          ...renderContentNoti(statusNotification.login.LOGIN_FAIL),
-          icon: <CloseCircleFilled style={{ color: "#ff4d4f" }} />,
-        };
-        openNotification(contentNoti);
-      } else {
-        contentNoti = {
-          ...renderContentNoti(),
-          icon: <CloseCircleFilled style={{ color: "#ff4d4f" }} />,
-        };
-        openNotification(contentNoti);
+        notification.error({
+          ...renderContentNoti(
+            statusNotification.login.LOGIN_FAIL,
+            error.response.data.error
+          ),
+        });
       }
     }
   };
@@ -149,7 +145,7 @@ function LoginContent() {
           <Button
             type="primary"
             htmlType="submit"
-            onClick={handleLogin}
+            size="large"
             loading={isLoading}
             block
           >
@@ -163,7 +159,7 @@ function LoginContent() {
             span: 16,
           }}
         >
-          <Button type="secondary" htmlType="submit">
+          <Button htmlType="submit">
             <Link to={routes.register}>Đăng ký</Link>
           </Button>
         </Form.Item>

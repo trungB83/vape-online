@@ -4,11 +4,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function forgotPasswordContent() {
-  const onFinish = (values) => {
+  const onFinish = (values: any) => {
     console.log("Success:", values);
   };
 
-  const onFinishFailed = (errorInfo) => {
+  const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
 
@@ -54,7 +54,7 @@ function forgotPasswordContent() {
             span: 16,
           }}
         >
-          <Button type="secondary" htmlType="submit">
+          <Button htmlType="submit">
             <Link to="/user/login">Trở lại Đăng nhập</Link>
           </Button>
         </Form.Item>

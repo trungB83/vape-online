@@ -62,7 +62,7 @@ function ProductDetail() {
                 <a href="tel:0972.939.830">Hotline: 0972.939.830</a>
               </div>
               <div className="ProductDetail__buyNow">
-                <Link href="#">MUA NGAY</Link>
+                <Link to="#">MUA NGAY</Link>
               </div>
               <div className="ProductDetail__galery">
                 <div className="ProductDetail__image"></div>
@@ -98,7 +98,7 @@ function ProductDetail() {
             </Tabs>
           </div>
           <div className="ProductDetail__samewProduct">
-          <h1 className="products-title-section">SẢN PHẨM TƯƠNG TỰ</h1>
+            <h1 className="products-title-section">SẢN PHẨM TƯƠNG TỰ</h1>
             <div className="products__list">
               <Link to="product/:productId" className="product__item">
                 <img src={prductImg} alt="" />

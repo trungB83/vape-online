@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "components/header/Header";
-import Footer from "components/footer/Footer";
-import HomeContent from "components/homeContent/homeContent";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
+import HomeContent from "../../components/homeContent/homeContent";
 import { useEffect } from "react";
-import { useStore } from "store";
-import { TYPES } from "store";
-import { fetchPostCates, fetchPosts } from "services/post.service";
-import {fetchProducts , fetchProductCates} from "services/product.service"
+import { useStore } from "../../store";
+import { TYPES } from "../../store";
+import { fetchPostCates, fetchPosts } from "../../services/post.service";
+import {fetchProducts , fetchProductCates} from "../../services/product.service"
 
 function Home() {
 

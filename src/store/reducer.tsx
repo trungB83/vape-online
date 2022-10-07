@@ -1,4 +1,4 @@
-import { TYPES } from "store";
+import { TYPES } from "../store";
 
 const initState = {
   users: {
@@ -24,7 +24,7 @@ const initState = {
   },
 };
 
-function reducer(state, action) {
+function reducer(state: any, action: any) {
   switch (action.type) {
     case TYPES.GET_POST:
       return { ...state, posts: { ...state.posts, item: action.payload.data } };

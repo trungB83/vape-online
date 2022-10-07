@@ -1,8 +1,8 @@
 import axios from 'axios';
-import {BASE_URL} from 'config'
+import {BASE_URL} from './config'
 import { notification } from "antd"
-import { getLocal } from 'core-authent/utils/localStorage';
-import { auth } from 'core-authent/constants/constant';
+import { getLocal } from './core-authent/utils/localStorage';
+import { auth } from './core-authent/constants/constant';
 
 
 export const httpClient = axios.create({
@@ -60,48 +60,50 @@ const getHeader = () => {
     }
   }
   
-  export function getApi(url) {
+  export function getApi(url: string) {
     return axios({
-      method: "get",
-      url
-    })
-  }
-  
-  export function deleteApi(url, data) {
+        method: 'get',
+        url,
+    });
+}
+
+export function deleteApi(url: string, data: any): any {
     return axios({
-      method: "delete",
-      url,
-      data: { id: data.id },
-      headers: getHeader()
-    })
-  }
-  
-  export function postApi(url, data) {
+        method: 'delete',
+        url,
+        data: { id: data.id },
+        headers: getHeader(),
+    });
+}
+
+export function postApi(url: string, data: any): any {
     return axios({
-      method: "post",
-      url,
-      data,
-      headers: getHeader()
-    })
-  }
-  
-  export function putApi(url, data) {
+        method: 'post',
+        url,
+        data,
+        headers: getHeader(),
+    });
+}
+
+export function putApi(url: string, data: any): any {
     return axios({
-      method: "put",
-      url,
-      data,
-      headers: getHeader()
-    })
-  }
-  
-  export function uploadApi(url, data) {
-    let formData = new FormData()
-    formData.append("fileUpload", data.fileUpload)
-    formData.append("folder", data.folder)
+        method: 'put',
+        url,
+        data,
+        headers: getHeader(),
+    });
+}
+
+export function uploadApi(url: string, data: any): any {
+    let formData = new FormData();
+    formData.append('fileUpload', data.fileUpload);
+    formData.append('folder', data.folder);
     return axios({
-      method: "post",
-      url,
-      data: formData,
-      headers: getHeaderUpload()
-    })
-  }
+        method: 'post',
+        url,
+        data: formData,
+        headers: getHeaderUpload(),
+    });
+}
+
+export default httpClient;
