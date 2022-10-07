@@ -3,7 +3,7 @@ import { Button, Col, DatePicker, Form, Input, Radio, Row } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import TreeSelect, { TreeNode } from "antd/lib/tree-select";
 import routes from "core-authent/constants/routes";
-import { useState } from "react";
+import React,{ useState } from "react";
 import { Link } from "react-router-dom";
 import "./AddPost.scss";
 

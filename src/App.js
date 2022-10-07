@@ -1,6 +1,6 @@
 import React, { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { StoreProvider } from "store/";
+import { StoreProvider } from "store";
 
 const Home = lazy(() => import("containers/home/Home"));
 
@@ -41,7 +41,6 @@ const ProfileDashBoard = React.lazy(() =>
 
 function App() {
   return (
-    
     <div className="App">
       <StoreProvider>
         <BrowserRouter>
@@ -80,7 +79,6 @@ function App() {
         </BrowserRouter>
       </StoreProvider>
     </div>
-
   );
 }
 

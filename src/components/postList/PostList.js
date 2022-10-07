@@ -1,4 +1,5 @@
 import "./PostList.scss";
+import React from "react";
 import { Link } from "react-router-dom";
 import asideProductImg from "../../assets/images/nga-360x360-100x100.jpg";
 import asidePostImg from "../../assets/images/circle-post.jpg";

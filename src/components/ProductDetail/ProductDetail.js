@@ -1,4 +1,5 @@
 import "./ProductDetail.scss";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Breadcrumb, Tabs } from "antd";
 import prductImg from "../../assets/images/IQOS-BLUE-gia-ban-hcm-0.jpg";

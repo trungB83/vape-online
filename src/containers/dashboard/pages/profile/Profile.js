@@ -5,6 +5,7 @@ import {
   TagsOutlined,
   UsergroupAddOutlined,
 } from "@ant-design/icons";
+import React from "react";
 import { Col, Row, Button } from "antd";
 import { auth } from "core-authent/constants/constant";
 import routes from "core-authent/constants/routes";

@@ -6,6 +6,7 @@ import {
   RightOutlined,
   UsergroupAddOutlined,
 } from "@ant-design/icons";
+import React from "react";
 import { Link } from "react-router-dom";
 import routes from "core-authent/constants/routes";
 import { useEffect, useState } from "react";

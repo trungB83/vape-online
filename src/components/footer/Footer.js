@@ -37,22 +37,22 @@ function Footer() {
                 <input
                   type="text"
                   className="footer__form-input"
-                  placehoder="Họ và tên..."
+                  // placehoder="Họ và tên..."
                 />
                 <input
                   type="tel"
                   className="footer__form-input"
-                  placehoder="Số điện thoại..."
+                  // placehoder="Số điện thoại..."
                 />
                 <input
                   type="text"
                   className="footer__form-input"
-                  placehoder="Địa chỉ của bạn..."
+                  // placehoder="Địa chỉ của bạn..."
                 />
                 <input
                   type="email"
                   className="footer__form-input"
-                  placehoder="Địa chỉ emaill..."
+                  // placehoder="Địa chỉ emaill..."
                 />
                 <textarea
                   name="textarea"

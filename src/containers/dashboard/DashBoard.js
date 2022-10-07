@@ -53,33 +53,36 @@ const DashBoard = () => {
     clearLocal();
   };
 
+  const itemsUserLogin=[
+    {
+      label: (
+        <Link to={`${routes.dashboard}${routes.profile}`}>
+          Trang cá nhân
+        </Link>
+      ),
+      key: "0",
+      icon: <UserOutlined />,
+    },
+    {
+      type: "divider",
+    },
+    {
+      label: (
+        <p className="btn_logout" onClick={showModalLogout}>
+          Đăng xuất
+        </p>
+      ),
+      key: "1",
+      icon: <LogoutOutlined />,
+    },
+  ]
+
   const menu = (
     <Menu
-      items={[
-        {
-          label: (
-            <Link to={`${routes.dashboard}${routes.profile}`}>
-              Trang cá nhân
-            </Link>
-          ),
-          key: "0",
-          icon: <UserOutlined />,
-        },
-        {
-          type: "divider",
-        },
-        {
-          label: (
-            <p className="btn_logout" onClick={showModalLogout}>
-              Đăng xuất
-            </p>
-          ),
-          key: "1",
-          icon: <LogoutOutlined />,
-        },
-      ]}
+      items={itemsUserLogin}
     />
   );
+
 
   return (
     <>
