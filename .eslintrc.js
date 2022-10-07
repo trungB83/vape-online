@@ -17,5 +17,33 @@ module.exports = {
     'react'
   ],
   rules: {
-  }
+  },
+  'import/order': [
+    2,
+    {
+      'newlines-between': 'always',
+      groups: [
+        'builtin',
+        'external',
+        'internal',
+        'parent',
+        'sibling',
+        'index',
+        'unknown',
+        'object',
+        'type',
+      ],
+      alphabetize: {
+        order: 'asc',
+        caseInsensitive: true,
+      },
+      pathGroups: [
+        {
+          pattern: 'react*',
+          group: 'external',
+          position: 'before',
+        },
+      ],
+    },
+  ],
 }
