@@ -7,18 +7,14 @@ import {
   UsergroupAddOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import routes from "coreAuthent/constants/routes";
+import routes from "core-authent/constants/routes";
 import { useEffect, useState } from "react";
-import { pathApi } from "coreAuthent/constants/pathApi";
+import { pathApi } from "core-authent/constants/pathApi";
 import { BASE_URL } from "config";
-
-
 
 function Home() {
   const [gridDataPost, SetGridDataPost] = useState([]);
   const [gridDataUser, SetGridDataUser] = useState([]);
-
-
 
   useEffect(() => {
     loadData();
@@ -27,7 +23,7 @@ function Home() {
   const loadData = async () => {
     const responsePost = await fetch(`${BASE_URL}${pathApi.post.posts}`);
     const responseUser = await fetch(`${BASE_URL}${pathApi.profile.profiles}`);
-    
+
     const jsonDataPost = await responsePost.json();
     const dataPost = jsonDataPost.data;
     SetGridDataPost(dataPost);
@@ -44,7 +40,7 @@ function Home() {
     comment: body,
   }));
   console.log("modifiedDataPost: ", modifiedDataPost);
-  
+
   const modifiedDataUser = gridDataUser.map(({ body, ...item }) => ({
     ...item,
     key: item.id,
@@ -230,7 +226,7 @@ function Home() {
               <h1>TIN TỨC MỚI</h1>
             </div>
             <div className="HomeDashBoard__content-box">
-            <Table
+              <Table
                 itemLayout="horizontal"
                 pagination={{
                   onChange: (page) => {

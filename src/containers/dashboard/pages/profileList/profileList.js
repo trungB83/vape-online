@@ -16,14 +16,13 @@ import {
   TreeSelect,
 } from "antd";
 import { Link } from "react-router-dom";
-import routes from "coreAuthent/constants/routes";
+import routes from "core-authent/constants/routes";
 import React, { useEffect, useState } from "react";
 import { DownOutlined, PlusOutlined } from "@ant-design/icons";
 import Search from "antd/lib/input/Search";
 import { TreeNode } from "antd/lib/tree-select";
-import { pathApi } from "coreAuthent/constants/pathApi";
+import { pathApi } from "core-authent/constants/pathApi";
 import { BASE_URL } from "config";
-
 
 const onSearch = (value) => console.log(value);
 
@@ -96,10 +95,9 @@ function ProfileList() {
 
   const handleDelete = (value) => {
     const dataSuorce = [...modifiedData];
-    const filteredData = dataSuorce.filter(item => item.id !== value.id)
-    SetGridData(filteredData)
-  }
-
+    const filteredData = dataSuorce.filter((item) => item.id !== value.id);
+    SetGridData(filteredData);
+  };
 
   const handleCategories = (newValue) => {
     console.log(newValue);
@@ -112,8 +110,8 @@ function ProfileList() {
 
   const columns = [
     {
-      title: "Id Group",
-      dataIndex: "nhom_nhan_vien_id",
+      title: "Id",
+      dataIndex: "nhan_vien_id",
       align: "center",
       editable: false,
     },
@@ -153,12 +151,10 @@ function ProfileList() {
       onFilter: (value, record) => record.address.indexOf(value) === 0,
     },
     {
-      title: "Tuổi",
-      dataIndex: "tuoi",
+      title: "Số điện thoại",
+      dataIndex: "so_dien_thoai",
       align: "center",
       editable: true,
-      defaultSortOrder: "descend",
-      sorter: (a, b) => a.age - b.age,
     },
     {
       title: "Ngày tạo",
@@ -170,17 +166,18 @@ function ProfileList() {
       title: "Hành động",
       dataIndex: "action",
       align: "center",
-      render: (_, record) => modifiedData.length > 1 ? (
-        <Popconfirm 
-          title="Xác nhận xóa ?"
-          onConfirm={() => handleDelete(record)}
-        >
-          <Button type="primary" danger>
-            Xóa
-          </Button>
-        </Popconfirm>
-      ): null,
-    }
+      render: (_, record) =>
+        modifiedData.length > 1 ? (
+          <Popconfirm
+            title="Xác nhận xóa ?"
+            onConfirm={() => handleDelete(record)}
+          >
+            <Button type="primary" danger>
+              Xóa
+            </Button>
+          </Popconfirm>
+        ) : null,
+    },
   ];
 
   return (
@@ -286,6 +283,7 @@ function ProfileList() {
             }}
             columns={columns}
             dataSource={modifiedData}
+            rowKey="nhan_vien_id"
           />
         </div>
       </div>

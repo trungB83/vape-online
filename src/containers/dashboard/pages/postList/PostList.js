@@ -14,12 +14,12 @@ import {
 } from "antd";
 import "./PostList.scss";
 import { Link } from "react-router-dom";
-import routes from "coreAuthent/constants/routes";
+import routes from "core-authent/constants/routes";
 import React, { useEffect, useState } from "react";
 import { DownOutlined, PlusOutlined } from "@ant-design/icons";
 import Search from "antd/lib/input/Search";
 import { TreeNode } from "antd/lib/tree-select";
-import { pathApi } from "coreAuthent/constants/pathApi";
+import { pathApi } from "core-authent/constants/pathApi";
 import { BASE_URL } from "config";
 
 const onSearch = (value) => console.log(value);
@@ -86,7 +86,7 @@ function PostList() {
     SetGridData(data);
   };
   console.log("gridData", gridData);
-  
+
   const modifiedData = gridData.map(({ body, ...item }) => ({
     ...item,
     key: item.id,
@@ -99,7 +99,6 @@ function PostList() {
   //   const filteredData = dataSuorce.filter(item => item.id !== value.id)
   //   SetGridData(filteredData)
   // }
-
 
   const handleCategories = (newValue) => {
     console.log(newValue);
@@ -190,10 +189,7 @@ function PostList() {
                 </Popconfirm>
               </span>
             ) : (
-              <Button 
-                onClick={() => setEditRow(true)} 
-                type="primary"
-              >
+              <Button onClick={() => setEditRow(true)} type="primary">
                 Sửa
               </Button>
             )}
@@ -202,25 +198,25 @@ function PostList() {
     },
   ];
   const isEditing = (record) => {
-    return record.key === editingKey
-  }
+    return record.key === editingKey;
+  };
 
-  const mergeColumns = columns.map((col) => {
-    if(!col.editable) {
-      return col;
-    }
-    else {
-      return {
-        ...col,
-        onCell: (record) => ({
-          record,
-          dataIndex: col.dataIndex,
-          title: col.title,
-          editing: isEditing(record),
-        })
-      } 
-    }
-  })
+  // const mergeColumns = columns.map((col) => {
+  //   if(!col.editable) {
+  //     return col;
+  //   }
+  //   else {
+  //     return {
+  //       ...col,
+  //       onCell: (record) => ({
+  //         record,
+  //         dataIndex: col.dataIndex,
+  //         title: col.title,
+  //         editing: isEditing(record),
+  //       })
+  //     }
+  //   }
+  // })
 
   return (
     <>
@@ -292,7 +288,9 @@ function PostList() {
           <Col className="right-actions" span={12}>
             <Button className="button-add-post ant-btn-round">
               <PlusOutlined />
-              <Link to={`${routes.dashboard}${routes.addpost}`}>Thêm mới bài viết</Link>
+              <Link to={`${routes.dashboard}${routes.addpost}`}>
+                Thêm mới bài viết
+              </Link>
             </Button>
           </Col>
         </Row>
@@ -311,7 +309,7 @@ function PostList() {
             }}
             columns={columns}
             dataSource={modifiedData}
-            rowKey='tin_tuc_id'
+            rowKey="tin_tuc_id"
           />
         </div>
       </div>

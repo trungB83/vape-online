@@ -1,15 +1,14 @@
 import React from "react";
 import "./homeContent.scss";
-import {Link} from 'react-router-dom'
-import sliderImg from "../../assets/images/slider.jpg";
-import icon1 from "../../assets/images/icon-1.png";
-import icon3 from "../../assets/images/icon3.png";
-import icon4 from "../../assets/images/icon-4.png";
-import prductImg from "../../assets/images/IQOS-BLUE-gia-ban-hcm-0.jpg";
-import chonkDescrpitionImg from "../../assets/images/cuahang.jpg";
+import { Link } from "react-router-dom";
+import sliderImg from "assets/images/slider.jpg";
+import icon1 from "assets/images/icon-1.png";
+import icon3 from "assets/images/icon3.png";
+import icon4 from "assets/images/icon-4.png";
+import prductImg from "assets/images/IQOS-BLUE-gia-ban-hcm-0.jpg";
+import chonkDescrpitionImg from "assets/images/cuahang.jpg";
 
 function homeContent(props) {
-
   return (
     <>
       <section className="slider">
@@ -112,7 +111,7 @@ function homeContent(props) {
       <section className="products">
         <div className="container">
           <h1 className="products-title-section">Sản phẩm IQOS</h1>
-          <div clasName="products__group">
+          <div className="products__group">
             <div className="products__list">
               <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="" />
@@ -149,7 +148,7 @@ function homeContent(props) {
       <section className="products-list-accessory">
         <div className="container">
           <h1 className="products-title-section">Phụ kiện IQOS</h1>
-          <div clasName="products__group">
+          <div className="products__group">
             <div className="products__list">
               <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="product-img" />
@@ -214,7 +213,7 @@ function homeContent(props) {
       <section className="products-list-cigarette">
         <div className="container">
           <h1 className="products-title-section">Thuốc lá IQOS</h1>
-          <div clasName="products__group">
+          <div className="products__group">
             <div className="products__list">
               <Link to="/product/:productId" className="product__item">
                 <img src={prductImg} alt="" />

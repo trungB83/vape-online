@@ -10,13 +10,13 @@ import {
 } from "@ant-design/icons";
 import Logo from "assets/images/logo-giuseart.png";
 import "./DashBoard.scss";
-import {  Dropdown, Layout, Menu, Modal, Space } from "antd";
+import { Dropdown, Layout, Menu, Modal, Space } from "antd";
 import React, { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import routes from "coreAuthent/constants/routes";
-import { clearLocal, getObjectLocal } from "coreAuthent/utils/localStorage";
+import routes from "core-authent/constants/routes";
+import { clearLocal, getObjectLocal } from "core-authent/utils/localStorage";
 import avatarDefault from "assets/images/avatar.png";
-import { auth } from "coreAuthent/constants/constant";
+import { auth } from "core-authent/constants/constant";
 import { BASE_URL } from "config";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -95,7 +95,10 @@ const DashBoard = () => {
           </div>
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
             <Menu.Item icon={<HomeFilled />} key={"1"}>
-              <Link defaultChecked={true} to={`${routes.dashboard}${routes.home}`}>
+              <Link
+                defaultChecked={true}
+                to={`${routes.dashboard}${routes.home}`}
+              >
                 Trang chủ
               </Link>
             </Menu.Item>
@@ -103,19 +106,27 @@ const DashBoard = () => {
               <Link to={`${routes.dashboard}${routes.posts}`}>Bài viết</Link>
             </Menu.Item>
             <Menu.Item icon={<FileAddOutlined />} key={"3"}>
-              <Link defaultChecked={true} to={`${routes.dashboard}${routes.adduser}`}>
+              <Link
+                defaultChecked={true}
+                to={`${routes.dashboard}${routes.adduser}`}
+              >
                 Thêm bài viết
               </Link>
             </Menu.Item>
             <Menu.Item icon={<UserOutlined />} key={"4"}>
-              <Link to={`${routes.dashboard}${routes.profilelist}`}>Người dùng</Link>
+              <Link to={`${routes.dashboard}${routes.profilelist}`}>
+                Người dùng
+              </Link>
             </Menu.Item>
             <Menu.Item icon={<UserAddOutlined />} key={"5"}>
-              <Link defaultChecked={true} to={`${routes.dashboard}${routes.adduser}`}>
+              <Link
+                defaultChecked={true}
+                to={`${routes.dashboard}${routes.adduser}`}
+              >
                 Thêm người dùng
               </Link>
             </Menu.Item>
-            
+
             <Menu.Item icon={<SettingFilled />} key={"6"}>
               <Link to={`${routes.dashboard}${routes.setting}`}>Cài đặt</Link>
             </Menu.Item>
@@ -148,7 +159,6 @@ const DashBoard = () => {
             </div>
           </Header>
           <Content style={{ margin: "0 16px" }}>
-           
             <div
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}

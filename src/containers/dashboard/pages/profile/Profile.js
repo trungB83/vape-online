@@ -6,9 +6,9 @@ import {
   UsergroupAddOutlined,
 } from "@ant-design/icons";
 import { Col, Row, Button } from "antd";
-import { auth } from "coreAuthent/constants/constant";
-import routes from "coreAuthent/constants/routes";
-import { getObjectLocal } from "coreAuthent/utils/localStorage";
+import { auth } from "core-authent/constants/constant";
+import routes from "core-authent/constants/routes";
+import { getObjectLocal } from "core-authent/utils/localStorage";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Profile.scss";

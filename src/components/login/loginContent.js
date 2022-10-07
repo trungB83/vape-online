@@ -2,13 +2,13 @@ import "./loginContent.scss";
 import { Button, Checkbox, Form, Input, notification } from "antd";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, statusNotification } from "coreAuthent/constants/constant";
-import { pathApi } from "coreAuthent/constants/pathApi";
-import routes from "coreAuthent/constants/routes";
-import { renderContentNoti } from "coreAuthent/utils/utils";
+import { auth, statusNotification } from "core-authent/constants/constant";
+import { pathApi } from "core-authent/constants/pathApi";
+import routes from "core-authent/constants/routes";
+import { renderContentNoti } from "core-authent/utils/utils";
 import { CheckCircleFilled, CloseCircleFilled } from "@ant-design/icons";
 import { httpClient } from "axiosClient";
-import { setLocal, setObjectLocal } from "coreAuthent/utils/localStorage";
+import { setLocal, setObjectLocal } from "core-authent/utils/localStorage";
 
 function LoginContent() {
   const [isLoading, setIsLoading] = useState(false);

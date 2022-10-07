@@ -13,10 +13,10 @@ import FormItem from "antd/es/form/FormItem";
 import TextArea from "antd/lib/input/TextArea";
 import TreeSelect, { TreeNode } from "antd/lib/tree-select";
 import { httpClient } from "axiosClient";
-import { statusNotification } from "coreAuthent/constants/constant";
-import { pathApi } from "coreAuthent/constants/pathApi";
-import routes from "coreAuthent/constants/routes";
-import { renderContentNoti } from "coreAuthent/utils/utils";
+import { statusNotification } from "core-authent/constants/constant";
+import { pathApi } from "core-authent/constants/pathApi";
+import routes from "core-authent/constants/routes";
+import { renderContentNoti } from "core-authent/utils/utils";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./AddUser.scss";
@@ -49,8 +49,7 @@ function AddUser() {
   const [valueStatus, setValueStatus] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
 
-const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   const handleGender = ({ target: { value } }) => {
     console.log("radio3 checked", value);
@@ -61,16 +60,15 @@ const navigate = useNavigate()
     setValueStatus(newValue);
     console.log(newValue);
   };
-  
 
-  const onFinish = values => {
+  const onFinish = (values) => {
     console.log("values", values);
     if (
       values &&
       values.ten_tai_khoan &&
       values.ten_nhan_vien &&
       values.email &&
-      values.mat_khau   
+      values.mat_khau
     ) {
       const body = {
         ten_tai_khoan: values.ten_tai_khoan.trim(),
@@ -83,18 +81,18 @@ const navigate = useNavigate()
         so_dien_thoai: values.so_dien_thoai.trim(),
         gioi_tinh: values.gioi_tinh,
         trang_thai: values.trang_thai.trim(),
-        gioi_thieu:values.trang_thai.trim(),
-      }
-      handleRegister(body)
+        gioi_thieu: values.trang_thai.trim(),
+      };
+      handleRegister(body);
     } else {
-      return
+      return;
     }
-  }
-  
-  const handleRegister = async body => {
-    setIsLoading(true)
+  };
+
+  const handleRegister = async (body) => {
+    setIsLoading(true);
     try {
-      const response = await httpClient.post(pathApi.profile.addProfile, body)
+      const response = await httpClient.post(pathApi.profile.addProfile, body);
       if (
         response &&
         response.data &&
@@ -102,17 +100,17 @@ const navigate = useNavigate()
         response.data.data &&
         response.data.success
       ) {
-        setIsLoading(false)
-        navigate(`${routes.dashboard}${routes.profilelist}`)
+        setIsLoading(false);
+        navigate(`${routes.dashboard}${routes.profilelist}`);
         notification.success({
-          ...renderContentNoti(statusNotification.register.REGISTER_SUCCESS)
-        })
+          ...renderContentNoti(statusNotification.register.REGISTER_SUCCESS),
+        });
       } else {
-        setIsLoading(false)
-        notification.success({ ...renderContentNoti() })
+        setIsLoading(false);
+        notification.success({ ...renderContentNoti() });
       }
     } catch (error) {
-      setIsLoading(false)
+      setIsLoading(false);
       if (
         error &&
         error.response &&
@@ -126,11 +124,11 @@ const navigate = useNavigate()
           ...renderContentNoti(
             statusNotification.register.REGISTER_FAIL,
             error.response.data.error
-          )
-        })
+          ),
+        });
       }
     }
-  }
+  };
 
   return (
     <>

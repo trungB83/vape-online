@@ -1,8 +1,8 @@
 import axios from 'axios';
 import {BASE_URL} from 'config'
 import { notification } from "antd"
-import { getLocal } from 'coreAuthent/utils/localStorage';
-import { auth } from 'coreAuthent/constants/constant';
+import { getLocal } from 'core-authent/utils/localStorage';
+import { auth } from 'core-authent/constants/constant';
 
 
 export const httpClient = axios.create({

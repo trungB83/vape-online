@@ -2,83 +2,81 @@ import "./registerContent.scss";
 import { Button, Checkbox, Form, Input, notification } from "antd";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { statusNotification } from "coreAuthent/constants/constant";
-import { pathApi } from "coreAuthent/constants/pathApi";
-import routes from "coreAuthent/constants/routes";
-import { renderContentNoti } from "coreAuthent/utils/utils";
+import { statusNotification } from "core-authent/constants/constant";
+import { pathApi } from "core-authent/constants/pathApi";
+import routes from "core-authent/constants/routes";
+import { renderContentNoti } from "core-authent/utils/utils";
 import { httpClient } from "axiosClient";
 
 function RegisterContent() {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
-const navigate = useNavigate()
+  const navigate = useNavigate();
 
-const onFinish = values => {
-  if (
-    values &&
-    values.ten_tai_khoan &&
-    values.ten_nhan_vien &&
-    values.email &&
-    values.mat_khau &&
-    values.xac_nhan_mat_khau
-  ) {
-    const body = {
-      ten_tai_khoan: values.ten_tai_khoan.trim(),
-      ten_nhan_vien: values.ten_nhan_vien.trim(),
-      email: values.email.trim(),
-      mat_khau: values.mat_khau.trim(),
-      xac_nhan_mat_khau: values.xac_nhan_mat_khau.trim()
-    }
-    handleRegister(body)
-  } else {
-    return
-  }
-}
-
-const onFinishFailed = errorInfo => {}
-
-const handleRegister = async body => {
-  setIsLoading(true)
-  try {
-    const response = await httpClient.post(pathApi.auth.regiter, body)
+  const onFinish = (values) => {
     if (
-      response &&
-      response.data &&
-      response.data.token &&
-      response.data.data &&
-      response.data.success
+      values &&
+      values.ten_tai_khoan &&
+      values.ten_nhan_vien &&
+      values.email &&
+      values.mat_khau &&
+      values.xac_nhan_mat_khau
     ) {
-      setIsLoading(false)
-      navigate(routes.login)
-      notification.success({
-        ...renderContentNoti(statusNotification.register.REGISTER_SUCCESS)
-      })
+      const body = {
+        ten_tai_khoan: values.ten_tai_khoan.trim(),
+        ten_nhan_vien: values.ten_nhan_vien.trim(),
+        email: values.email.trim(),
+        mat_khau: values.mat_khau.trim(),
+        xac_nhan_mat_khau: values.xac_nhan_mat_khau.trim(),
+      };
+      handleRegister(body);
     } else {
-      setIsLoading(false)
-      notification.success({ ...renderContentNoti() })
+      return;
     }
-  } catch (error) {
-    setIsLoading(false)
-    if (
-      error &&
-      error.response &&
-      error.response.data &&
-      error.response.data.error &&
-      !error.response.data.success &&
-      error.response.status !== 500 &&
-      error.response.status !== 401
-    ) {
-      notification.success({
-        ...renderContentNoti(
-          statusNotification.register.REGISTER_FAIL,
-          error.response.data.error
-        )
-      })
-    }
-  }
-}
+  };
 
-  
+  const onFinishFailed = (errorInfo) => {};
+
+  const handleRegister = async (body) => {
+    setIsLoading(true);
+    try {
+      const response = await httpClient.post(pathApi.auth.regiter, body);
+      if (
+        response &&
+        response.data &&
+        response.data.token &&
+        response.data.data &&
+        response.data.success
+      ) {
+        setIsLoading(false);
+        navigate(routes.login);
+        notification.success({
+          ...renderContentNoti(statusNotification.register.REGISTER_SUCCESS),
+        });
+      } else {
+        setIsLoading(false);
+        notification.success({ ...renderContentNoti() });
+      }
+    } catch (error) {
+      setIsLoading(false);
+      if (
+        error &&
+        error.response &&
+        error.response.data &&
+        error.response.data.error &&
+        !error.response.data.success &&
+        error.response.status !== 500 &&
+        error.response.status !== 401
+      ) {
+        notification.success({
+          ...renderContentNoti(
+            statusNotification.register.REGISTER_FAIL,
+            error.response.data.error
+          ),
+        });
+      }
+    }
+  };
 
   return (
     <div className="main">

@@ -10,4 +10,4 @@ export const pathApi = {
         profiles: '/users',
         addProfile: '/user'
     }
-}
+};
