@@ -1,6 +1,6 @@
 import "./postDetail.scss";
 import React from "react";
-import asideProductImg from "../../assets/images/nga-360x360-100x100.jpg";
+import asideProductImg from "../../assets/images/nga360x360100x100.jpg";
 import asidePostImg from "../../assets/images/circle-post.jpg";
 import postImg from "../../assets/images/cuahang.jpg";
 import { Link } from "react-router-dom";
