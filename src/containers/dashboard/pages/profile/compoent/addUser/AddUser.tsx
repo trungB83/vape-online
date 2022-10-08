@@ -21,6 +21,7 @@ import { renderContentNoti } from "core-authent/utils/utils";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./AddUser.scss";
+import { IInforUserAdd } from './../../../../../../core-authent/models/model';
 
 const defaultUser = {
   ten_nhan_vien: "",
@@ -40,7 +41,7 @@ const defaultUser = {
   ma_gioi_thieu: "",
 };
 
-const handleDOB = (date, dateString) => {
+const handleDOB = (date:any, dateString:string) => {
   console.log(date, dateString);
 };
 
@@ -52,17 +53,17 @@ function AddUser() {
 
   const navigate = useNavigate();
 
-  const handleGender = ({ target: { value } }) => {
+  const handleGender = (value:any) => {
     console.log("radio3 checked", value);
     setValueGender(value);
   };
 
-  const handleStatus = (newValue) => {
+  const handleStatus = (newValue:any) => {
     setValueStatus(newValue);
     console.log(newValue);
   };
 
-  const onFinish = (values) => {
+  const onFinish = (values: IInforUserAdd): void => {
     console.log("values", values);
     if (
       values &&
@@ -71,7 +72,7 @@ function AddUser() {
       values.email &&
       values.mat_khau
     ) {
-      const body = {
+      const body: IInforUserAdd = {
         ten_tai_khoan: values.ten_tai_khoan.trim(),
         ten_nhan_vien: values.ten_nhan_vien.trim(),
         email: values.email.trim(),
@@ -90,46 +91,25 @@ function AddUser() {
     }
   };
 
-  const handleRegister = async (body) => {
+  const handleRegister = async (body: IInforUserAdd) => {
     setIsLoading(true);
     try {
-      const response = await httpClient.post(pathApi.profile.addProfile, body);
-      if (
-        response &&
-        response.data &&
-        response.data.token &&
-        response.data.data &&
-        response.data.success
-      ) {
+      const response = await httpClient.post(pathApi.profile.profiles, body);
+      if (response && response.data && response.data.token && response.data.data && response.data.success) {
         setIsLoading(false);
-        navigate(`${routes.dashboard}${routes.profilelist}`);
-        notification.success({
-          ...renderContentNoti(statusNotification.register.REGISTER_SUCCESS),
-        });
+        navigate(routes.login);
+        notification.success({...renderContentNoti(statusNotification.register.REGISTER_SUCCESS)});
       } else {
         setIsLoading(false);
-        notification.success({ ...renderContentNoti() });
+        notification.success({...renderContentNoti()});
       }
-    } catch (error) {
+    } catch (error: any) {
       setIsLoading(false);
-      if (
-        error &&
-        error.response &&
-        error.response.data &&
-        error.response.data.error &&
-        !error.response.data.success &&
-        error.response.status !== 500 &&
-        error.response.status !== 401
-      ) {
-        notification.success({
-          ...renderContentNoti(
-            statusNotification.register.REGISTER_FAIL,
-            error.response.data.error
-          ),
-        });
+      if (error && error.response && error.response.data && error.response.data.error && !error.response.data.success && error.response.status !== 500 && error.response.status !== 401) {
+        notification.success({...renderContentNoti(statusNotification.register.REGISTER_FAIL, error.response.data.error)});
       }
     }
-  };
+  }
 
   return (
     <>
@@ -319,7 +299,6 @@ function AddUser() {
                     <Button
                       className="btn-control green-6"
                       htmlType="submit"
-                      onChange={handleRegister}
                     >
                       Xuất bản
                     </Button>

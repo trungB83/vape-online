@@ -12,6 +12,7 @@ import routes from "core-authent/constants/routes";
 import { useEffect, useState } from "react";
 import { pathApi } from "core-authent/constants/pathApi";
 import { BASE_URL } from "config";
+import { ColumnsType } from "antd/lib/table";
 
 function Home() {
   const [gridDataPost, SetGridDataPost] = useState([]);
@@ -27,123 +28,93 @@ function Home() {
 
     const jsonDataPost = await responsePost.json();
     const dataPost = jsonDataPost.data;
-    SetGridDataPost(dataPost);
+    SetGridDataPost(gridDataPost);
 
     const jsonDataUser = await responseUser.json();
     const dataUser = jsonDataUser.data;
-    SetGridDataUser(dataUser);
+    SetGridDataUser(gridDataUser);
   };
   console.log("gridDataPost", gridDataPost);
 
-  const modifiedDataPost = gridDataPost.map(({ body, ...item }) => ({
-    ...item,
-    key: item.id,
-    comment: body,
-  }));
-  console.log("modifiedDataPost: ", modifiedDataPost);
+  // const modifiedDataPost = gridDataPost.map(({ body, ...item }) => ({
+  //   ...item,
+  //   key: item.id,
+  //   comment: body,
+  // }));
+  // console.log("modifiedDataPost: ", modifiedDataPost);
 
-  const modifiedDataUser = gridDataUser.map(({ body, ...item }) => ({
-    ...item,
-    key: item.id,
-    comment: body,
-  }));
-  console.log("gridDataUser: ", gridDataUser);
+  // const modifiedDataUser = gridDataUser.map(({ body, ...item }) => ({
+  //   ...item,
+  //   key: item.id,
+  //   comment: body,
+  // }));
+  // console.log("gridDataUser: ", gridDataUser);
 
-  const columnsPost = [
+  interface DataType {
+    key: string;
+    name: string;
+    age: number;
+    address: string;
+    tags: string[];
+    title: string;
+    dataIndex: string;
+    editable: boolean;
+  }
+
+  const columnsPost: ColumnsType<DataType> = [
     {
       title: "Id",
       dataIndex: "tin_tuc_id",
-      align: "center",
-      editable: false,
     },
     {
       title: "Tiêu đề",
       dataIndex: "tieu_de",
-      align: "left",
-      editable: false,
     },
     {
       title: "Nhóm bài viết",
       dataIndex: "nhom_tin_tuc_id",
-      align: "left",
-      editable: true,
     },
     {
       title: "Tác giả",
       dataIndex: "nguoi_tao",
-      align: "center",
-      editable: true,
-      defaultSortOrder: "descend",
-      sorter: (a, b) => a.age - b.age,
     },
     {
       title: "Ngày tạo",
       dataIndex: "ngay_tao",
-      align: "center",
-      editable: false,
     },
     {
       title: "Trạng thái",
       dataIndex: "trang_thai",
-      align: "center",
-      editable: false,
     },
   ];
-  const columnsUser = [
+  const columnsUser: ColumnsType<DataType> = [
     {
       title: "Id Group",
       dataIndex: "nhom_nhan_vien_id",
-      align: "center",
-      editable: false,
     },
     {
       title: "Ảnh đại diện",
       dataIndex: "anh_dai_dien",
-      align: "center",
-      editable: false,
     },
     {
       title: "Họ và tên",
       dataIndex: "ten_nhan_vien",
-      align: "left",
-      editable: false,
     },
     {
       title: "Email",
       dataIndex: "email",
-      align: "center",
-      editable: false,
     },
     {
       title: "Địa chỉ",
       dataIndex: "dia_chi",
-      align: "center",
-      editable: false,
-      filters: [
-        {
-          text: "Hà Nội",
-          value: "Hanoi",
-        },
-        {
-          text: "Lào Cai",
-          value: "Laocai",
-        },
-      ],
-      onFilter: (value, record) => record.address.indexOf(value) === 0,
     },
     {
       title: "Tuổi",
       dataIndex: "tuoi",
-      align: "center",
-      editable: true,
-      defaultSortOrder: "descend",
-      sorter: (a, b) => a.age - b.age,
     },
     {
       title: "Ngày tạo",
       dataIndex: "ngay_tao",
-      align: "center",
-      editable: false,
     },
   ];
 
@@ -210,7 +181,7 @@ function Home() {
             </div>
             <div className="HomeDashBoard__content-box">
               <Table
-                itemLayout="horizontal"
+                // itemLayout="horizontal"
                 pagination={{
                   onChange: (page) => {
                     console.log(page);
@@ -218,7 +189,7 @@ function Home() {
                   pageSize: 10,
                 }}
                 columns={columnsUser}
-                dataSource={modifiedDataUser}
+                dataSource={gridDataUser}
               />
             </div>
           </Col>
@@ -228,7 +199,7 @@ function Home() {
             </div>
             <div className="HomeDashBoard__content-box">
               <Table
-                itemLayout="horizontal"
+                // itemLayout="horizontal"
                 pagination={{
                   onChange: (page) => {
                     console.log(page);
@@ -236,7 +207,7 @@ function Home() {
                   pageSize: 10,
                 }}
                 columns={columnsPost}
-                dataSource={modifiedDataPost}
+                dataSource={gridDataPost}
               />
             </div>
           </Col>

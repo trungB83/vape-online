@@ -5,10 +5,10 @@ import sliderImg from "../../assets/images/slider.jpg";
 import icon1 from "../../assets/images/icon-1.png";
 import icon3 from "../../assets/images/icon3.png";
 import icon4 from "../../assets/images/icon-4.png";
-import prductImg from "../../assets/images/IQOS-BLUE-gia-ban-hcm-0.jpg";
+import prductImg from "../../assets/images/IQOSBLUEgiabanhcm0.jpg";
 import chonkDescrpitionImg from "../../assets/images/cuahang.jpg";
 
-function homeContent(props: any) {
+function HomeContent(props: any) {
   return (
     <>
       <section className="slider">
@@ -299,4 +299,4 @@ function homeContent(props: any) {
   );
 }
 
-export default homeContent;
+export default HomeContent;

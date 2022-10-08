@@ -42,6 +42,7 @@ function Home() {
       <Header/>
       <HomeContent />
       <Footer />
+
     </div>
   );
 }

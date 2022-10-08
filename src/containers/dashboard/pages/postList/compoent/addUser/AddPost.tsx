@@ -18,7 +18,7 @@ const genderOption = [
   },
 ];
 
-const handleDOB = (date, dateString) => {
+const handleDOB = (date:any, dateString:string) => {
   console.log(date, dateString);
 };
 
@@ -26,12 +26,12 @@ function AddPost() {
   const [valueGender, setValueGender] = useState("Apple");
   const [valueStatus, setValueStatus] = useState(undefined);
 
-  const handleGender = ({ target: { value } }) => {
-    console.log("radio3 checked", value);
+  const handleGender = (value:any) => {
+    console.log("gender checked", value);
     setValueGender(value);
   };
 
-  const handleStatus = (newValue) => {
+  const handleStatus = (newValue:any) => {
     setValueStatus(newValue);
   };
 

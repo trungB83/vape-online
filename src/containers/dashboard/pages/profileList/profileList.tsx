@@ -1,18 +1,20 @@
+import "./profileList.scss";
 import {
   Button,
   Col,
   DatePicker,
+  Divider,
   Dropdown,
   Menu,
   message,
   Popconfirm,
+  Radio,
   Row,
   Select,
   Space,
   Table,
   TreeSelect,
 } from "antd";
-import "./PostList.scss";
 import { Link } from "react-router-dom";
 import routes from "core-authent/constants/routes";
 import React, { useEffect, useState } from "react";
@@ -21,17 +23,18 @@ import Search from "antd/lib/input/Search";
 import { TreeNode } from "antd/lib/tree-select";
 import { pathApi } from "core-authent/constants/pathApi";
 import { BASE_URL } from "config";
+import { ColumnsType } from "antd/lib/table";
 
-const onSearch = (value) => console.log(value);
+const onSearch = (value: any) => console.log(value);
 
 const { RangePicker } = DatePicker;
 
-const handleMenuClick = (e) => {
+const handleMenuClick = (e: any) => {
   message.info("Click on menu item.");
   console.log("click", e);
 };
 
-const itemsCheckbox=[
+const itemsCheckbox = [
   {
     label: "1st menu item",
     key: "1",
@@ -44,188 +47,127 @@ const itemsCheckbox=[
     label: "3rd menu item",
     key: "3",
   },
-]
+];
 
-const menucheckbox = (
-  <Menu
-    onClick={handleMenuClick}
-    items={itemsCheckbox}
-  />
-);
-
-const rowSelection = {
-  onChange: (selectedRowKeys, selectedRows) => {
-    console.log(
-      `selectedRowKeys: ${selectedRowKeys}`,
-      "selectedRows: ",
-      selectedRows
-    );
-  },
-  getCheckboxProps: (record) => ({
-    disabled: record.name === "Disabled User",
-    // Column configuration not to be checked
-    name: record.name,
-  }),
-};
+const menucheckbox = <Menu onClick={handleMenuClick} items={itemsCheckbox} />;
 
 const { Option } = Select;
 
-function PostList() {
-  const [gridData, SetGridData] = useState([]);
+function ProfileList() {
+  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [value, setValue] = useState();
+  const [gridData, SetGridData] = useState([]);
   const [selectionType, setSelectionType] = useState("checkbox");
-  const [editingKey, setEditingKey] = useState("");
-  const [editRow, setEditRow] = useState(false);
+
+  const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
+    console.log("selectedRowKeys changed: ", selectedRowKeys);
+    setSelectedRowKeys(newSelectedRowKeys);
+  };
+
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: onSelectChange,
+  };
+  const hasSelected = selectedRowKeys.length > 0;
 
   useEffect(() => {
     loadData();
   }, []);
 
   const loadData = async () => {
-    const response = await fetch(`${BASE_URL}${pathApi.post.posts}`);
+    const response = await fetch(`${BASE_URL}${pathApi.profile.profiles}`);
     const jsonData = await response.json();
     const data = jsonData.data;
     SetGridData(data);
   };
   console.log("gridData", gridData);
 
-  const modifiedData = gridData.map(({ body, ...item }) => ({
-    ...item,
-    key: item.id,
-    comment: body,
-  }));
-  console.log("modifiedData", modifiedData);
+  // const modifiedData = gridData.map(({ body, ...item: [...string[]] }) => ({
+  //   ...item,
+  //   key: item.id,
+  //   content: body,
+  // }));
+  // console.log("modifiedData", modifiedData);
 
-  // const handleDelete = (value) => {
+  // const handleDelete = (value: any) => {
   //   const dataSuorce = [...modifiedData];
-  //   const filteredData = dataSuorce.filter(item => item.id !== value.id)
-  //   SetGridData(filteredData)
-  // }
+  //   const filteredData = dataSuorce.filter((item) => item.id !== value.id);
+  //   SetGridData(filteredData);
+  // };
 
-  const handleCategories = (newValue) => {
-    console.log(newValue);
+  const handleCategories = (newValue: any) => {
+    console.log("handleCategories", newValue);
     setValue(newValue);
   };
 
-  const handleStatus = (value) => {
+  const handleStatus = (value: any) => {
     console.log(`selected ${value}`);
   };
 
-  const columns = [
+  interface DataType {
+    key: string;
+    name: string;
+    age: number;
+    address: string;
+    tags: string[];
+    title: string;
+    dataIndex: string;
+    editable: boolean;
+  }
+
+  const columns: ColumnsType<DataType> = [
     {
       title: "Id",
-      dataIndex: "tin_tuc_id",
-      align: "center",
-      editable: false,
-    },
-    // {
-    //   title: "Ảnh đại diện",
-    //   dataIndex: <img src="anh_dai_dien" width={100} alt="" />,
-    //   align: "center",
-    //   editable: false,
-    // },
-    {
-      title: "Tiêu đề",
-      dataIndex: "tieu_de",
-      align: "left",
-      editable: false,
+      dataIndex: "nhan_vien_id",
     },
     {
-      title: "Nhóm bài viết",
-      dataIndex: "nhom_tin_tuc_id",
-      align: "left",
-      editable: true,
+      title: "Ảnh đại diện",
+      dataIndex: "anh_dai_dien",
     },
     {
-      title: "Tác giả",
-      dataIndex: "nguoi_tao",
-      align: "center",
-      editable: true,
-      defaultSortOrder: "descend",
-      sorter: (a, b) => a.age - b.age,
+      title: "Họ và tên",
+      dataIndex: "ten_nhan_vien",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+    },
+    {
+      title: "Địa chỉ",
+      dataIndex: "dia_chi",
+    },
+    {
+      title: "Số điện thoại",
+      dataIndex: "so_dien_thoai",
     },
     {
       title: "Ngày tạo",
       dataIndex: "ngay_tao",
-      align: "center",
-      editable: false,
-    },
-    {
-      title: "Trạng thái",
-      dataIndex: "trang_thai",
-      align: "center",
-      editable: false,
     },
     {
       title: "Hành động",
       dataIndex: "action",
       align: "center",
-      render: (_, record) =>
-        modifiedData.length > 1 ? (
-          <Space>
-            <Popconfirm
-              title="Xác nhận xóa ?"
-              onConfirm={() => record}
-              // handleDelete
-            >
-              <Button type="primary" danger>
-                Xóa
-              </Button>
-            </Popconfirm>
-            {editRow ? (
-              <span>
-                <Button
-                  onClick={(e) => console.log(e)}
-                  type="primary"
-                  style={{ marginBottom: 8 }}
-                >
-                  Lưu
-                </Button>
-                <Popconfirm
-                  title="Hủy chỉnh sửa?"
-                  onConfirm={() => setEditRow(false)}
-                >
-                  <Button type="primary" danger>
-                    Hủy
-                  </Button>
-                </Popconfirm>
-              </span>
-            ) : (
-              <Button onClick={() => setEditRow(true)} type="primary">
-                Sửa
-              </Button>
-            )}
-          </Space>
-        ) : null,
+      // render: (_, record) =>
+      //   modifiedData.length > 1 ? (
+      //     <Popconfirm
+      //       title="Xác nhận xóa ?"
+      //       onConfirm={() => handleDelete(record)}
+      //     >
+      //       <Button type="primary" danger>
+      //         Xóa
+      //       </Button>
+      //     </Popconfirm>
+      //   ) : null,
     },
   ];
-  const isEditing = (record) => {
-    return record.key === editingKey;
-  };
-
-  // const mergeColumns = columns.map((col) => {
-  //   if(!col.editable) {
-  //     return col;
-  //   }
-  //   else {
-  //     return {
-  //       ...col,
-  //       onCell: (record) => ({
-  //         record,
-  //         dataIndex: col.dataIndex,
-  //         title: col.title,
-  //         editing: isEditing(record),
-  //       })
-  //     }
-  //   }
-  // })
 
   return (
     <>
       <div className="pagePostList">
         <Row gutter={16} className="first-row">
           <Col className="gutter-row" span={8}>
-            <h2>Bài viết</h2>
+            <h2>Người dùng</h2>
           </Col>
           <Col className="gutter-row" span={16}>
             <Row gutter={16}>
@@ -290,19 +232,27 @@ function PostList() {
           <Col className="right-actions" span={12}>
             <Button className="button-add-post ant-btn-round">
               <PlusOutlined />
-              <Link to={`${routes.dashboard}${routes.addpost}`}>
-                Thêm mới bài viết
+              <Link to={`${routes.dashboard}${routes.adduser}`}>
+                Thêm mới người dùng
               </Link>
             </Button>
           </Col>
         </Row>
         <div>
-          <Table
-            rowSelection={{
-              type: selectionType,
-              ...rowSelection,
+          <Radio.Group
+            onChange={({ target: { value } }) => {
+              setSelectionType(value);
             }}
-            itemLayout="horizontal"
+            value={selectionType}
+          >
+            <Radio value="checkbox">Checkbox</Radio>
+            <Radio value="radio">radio</Radio>
+          </Radio.Group>
+
+          <Divider />
+
+          <Table
+            rowSelection={rowSelection}
             pagination={{
               onChange: (page) => {
                 console.log(page);
@@ -310,8 +260,8 @@ function PostList() {
               pageSize: 10,
             }}
             columns={columns}
-            dataSource={modifiedData}
-            rowKey="tin_tuc_id"
+            dataSource={gridData}
+            rowKey="nhan_vien_id"
           />
         </div>
       </div>
@@ -319,4 +269,4 @@ function PostList() {
   );
 }
 
-export default PostList;
+export default ProfileList;

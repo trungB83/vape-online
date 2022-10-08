@@ -16,8 +16,8 @@ import "./Profile.scss";
 import { API_URL } from "config";
 import Avatar from "assets/images/avatar.png";
 function Profile() {
-  const [userInfo, setUserInfo] = useState(null);
-  const [userInfoMore, setUserInfoMore] = useState([]);
+  const [userInfo, setUserInfo] = useState<any>(null);
+  const [userInfoMore, setUserInfoMore] = useState<string[]>([]);
 
   useEffect(() => {
     const userInfoLocal = getObjectLocal(auth.USER_INFO);
