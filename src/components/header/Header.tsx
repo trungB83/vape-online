@@ -3,7 +3,7 @@ import "./Header.scss";
 import { Link } from "react-router-dom";
 import logoImg from "../../assets/images/logogiuseart.png";
 import hotlineImg from "assets/images/hotline.png";
-import routes from "../../core-authent/constants/routes";
+import routes from "constants/routes";
 
 function Header() {
   return (

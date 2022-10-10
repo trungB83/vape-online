@@ -1,1 +1,0 @@
-export * as TYPES from "./action";

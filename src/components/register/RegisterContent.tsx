@@ -2,12 +2,8 @@ import "./registerContent.scss";
 import { Button, Checkbox, Form, Input, notification } from "antd";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { statusNotification } from "../../core-authent/constants/constant";
-import { pathApi } from "../../core-authent/constants/pathApi";
-import routes from "../../core-authent/constants/routes";
-import { renderContentNoti } from "../../core-authent/utils/utils";
-import { httpClient } from "../../axiosClient";
-import { IInforUserRegister } from "./../../core-authent/models/model";
+import routes from "constants/routes";
+
 
 function RegisterContent() {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,68 +11,13 @@ function RegisterContent() {
   const navigate = useNavigate();
 
   const onFinish = (values: any) => {
-    if (
-      values &&
-      values.ten_tai_khoan &&
-      values.ten_nhan_vien &&
-      values.email &&
-      values.mat_khau &&
-      values.xac_nhan_mat_khau
-    ) {
-      const body = {
-        ten_tai_khoan: values.ten_tai_khoan.trim(),
-        ten_nhan_vien: values.ten_nhan_vien.trim(),
-        email: values.email.trim(),
-        mat_khau: values.mat_khau.trim(),
-        xac_nhan_mat_khau: values.xac_nhan_mat_khau.trim(),
-      };
-      handleRegister(body);
-    } else {
-      return;
-    }
+   
   };
 
   const onFinishFailed = (errorInfo: any) => {};
 
-  const handleRegister = async (body: IInforUserRegister) => {
-    setIsLoading(true);
-    try {
-      const response = await httpClient.post(pathApi.auth.regiter, body);
-      if (
-        response &&
-        response.data &&
-        response.data.token &&
-        response.data.data &&
-        response.data.success
-      ) {
-        setIsLoading(false);
-        navigate(routes.login);
-        notification.success({
-          ...renderContentNoti(statusNotification.register.REGISTER_SUCCESS),
-        });
-      } else {
-        setIsLoading(false);
-        notification.success({ ...renderContentNoti() });
-      }
-    } catch (error: any) {
-      setIsLoading(false);
-      if (
-        error &&
-        error.response &&
-        error.response.data &&
-        error.response.data.error &&
-        !error.response.data.success &&
-        error.response.status !== 500 &&
-        error.response.status !== 401
-      ) {
-        notification.success({
-          ...renderContentNoti(
-            statusNotification.register.REGISTER_FAIL,
-            error.response.data.error
-          ),
-        });
-      }
-    }
+  const handleRegister = async () => {
+   
   };
 
   return (
