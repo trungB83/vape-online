@@ -5,12 +5,15 @@ import asideProductImg from "../../assets/images/nga360x360100x100.jpg";
 import asidePostImg from "../../assets/images/circle-post.jpg";
 import postImg from "../../assets/images/cuahang-300x280.jpg";
 
-function PostList() {
+function PostList(props:any) {
+  console.log("props", props );
+  
   return (
     <div className="container">
       <div className="postCategory">
         <div className="postCategory__content">
           <div className="postCategory__list">
+
             <Link to="/post/:postId" className="postCategory__post">
               <div className="postCategory__post-img">
                 <img src={postImg} alt="" />
@@ -25,62 +28,7 @@ function PostList() {
                 </div>
               </div>
             </Link>
-            <Link to="/post/:postId" className="postCategory__post">
-              <div className="postCategory__post-img">
-                <img src={postImg} alt="" />
-              </div>
-              <div className="postCategory__post-text">
-                <div className="postCategory__post-title">
-                  Vị thuốc IQOS nào phù hợp với bạn
-                </div>
-                <div className="postCategory__post-subTitle">
-                  Để chiều lòng người sử dụng IQOS, nhà sản xuất đã cho ra mắt
-                  các...
-                </div>
-              </div>
-            </Link>
-            <Link to="/post/:postId" className="postCategory__post">
-              <div className="postCategory__post-img">
-                <img src={postImg} alt="" />
-              </div>
-              <div className="postCategory__post-text">
-                <div className="postCategory__post-title">
-                  Vị thuốc IQOS nào phù hợp với bạn
-                </div>
-                <div className="postCategory__post-subTitle">
-                  Để chiều lòng người sử dụng IQOS, nhà sản xuất đã cho ra mắt
-                  các...
-                </div>
-              </div>
-            </Link>
-            <Link to="/post/:postId" className="postCategory__post">
-              <div className="postCategory__post-img">
-                <img src={postImg} alt="" />
-              </div>
-              <div className="postCategory__post-text">
-                <div className="postCategory__post-title">
-                  Vị thuốc IQOS nào phù hợp với bạn
-                </div>
-                <div className="postCategory__post-subTitle">
-                  Để chiều lòng người sử dụng IQOS, nhà sản xuất đã cho ra mắt
-                  các...
-                </div>
-              </div>
-            </Link>
-            <Link to="/post/:postId" className="postCategory__post">
-              <div className="postCategory__post-img">
-                <img src={postImg} alt="" />
-              </div>
-              <div className="postCategory__post-text">
-                <div className="postCategory__post-title">
-                  Vị thuốc IQOS nào phù hợp với bạn
-                </div>
-                <div className="postCategory__post-subTitle">
-                  Để chiều lòng người sử dụng IQOS, nhà sản xuất đã cho ra mắt
-                  các...
-                </div>
-              </div>
-            </Link>
+           
           </div>
         </div>
         <div className="postCategory__aside">

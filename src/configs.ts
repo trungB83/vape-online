@@ -66,7 +66,7 @@ const getEnvVars = (env = 'development') => {
   } else {
     envConfigs = ENV.development;
   }
-  console.warn('===> Exam App Configs: ', envConfigs);
+  console.warn('===> App Configs: ', envConfigs);
   return envConfigs;
 };
 

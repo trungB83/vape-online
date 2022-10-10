@@ -81,7 +81,8 @@
 // products
 .products,
 .products-list-accessory,
-.products-list-cigarette {
+.products-list-cigarette,
+.post-list {
   padding: 50px 0;
   border-bottom: 1px solid #c5c8c7;
   .products-title-section {
@@ -110,7 +111,7 @@
       color: black;
       img {
         width: 100%;
-        height: auto;
+        height: 300px;
         display: block;
         padding-bottom: 5px;
       }
@@ -129,13 +130,42 @@
       }
     }
   }
+  // post-list
+  .post__group {
+    margin: 0 20px;
+    .post__list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .post__item {
+        width: 20%;
+        padding: 10px 5px;
+        color: black;
+        img {
+          width: 100%;
+          height: 300px;
+          object-fit: cover;
+          display: block;
+          padding-bottom: 5px;
+        }
+        .post-text {
+          .post-title {
+            font-weight: 600;
+            margin-top: 0.1em;
+            margin-bottom: 0.1em;
+            padding: 5px 0;
+          }
+        }
+      }
+    }
+  }
 }
 
 // chonk description
 .big-description-content {
   display: flex;
   .big-description__image {
-    flex-basis: 40%; 
+    flex-basis: 40%;
     img {
       width: 100%;
       height: auto;

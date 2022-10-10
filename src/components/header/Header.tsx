@@ -5,7 +5,7 @@ import logoImg from "../../assets/images/logogiuseart.png";
 import hotlineImg from "assets/images/hotline.png";
 import routes from "constants/routes";
 
-function Header() {
+function Header(props: any) {
   return (
     <div className="app-header">
       <header className="header">
@@ -30,10 +30,10 @@ function Header() {
                   </Link>
                 </li>
                 <li className="header__navigate-item">
-                  <Link to="/post-category/:postCategoryId">Tin Tức</Link>
+                  <Link to="/post-category/1">Tin Tức</Link>
                 </li>
                 <li className="header__navigate-item">
-                  <Link to="/">Hỏi đáp</Link>
+                  <Link to="/post-category/2">Hỏi đáp</Link>
                 </li>
                 <li className="header__navigate-item">
                   <Link to="/">Ý kiến khách hàng</Link>

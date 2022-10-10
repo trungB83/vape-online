@@ -7,28 +7,30 @@ import asideProductImg from "../../assets/images/nga360x360100x100.jpg";
 import asideImg from "../../assets/images/cuahang.jpg";
 import HDSD from "../../assets/images/su-dung-copy.jpg";
 
-function ProductDetail() {
+function ProductDetail(props:any) {
+  console.log("props", props);
+  
   return (
     <div className="container">
-      <div className="ProductDetail">
+      <div className="ProductDetail" key={props.product.prod_id}>
         <div className="ProductDetail__content">
           <div className="ProductDetail__wrapper">
             <div className="ProductDetail__pductImages">
               <div className="ProductDetail__mainImage">
-                <img src={prductImg} alt="" />
+                <img src={props.product.prod_thumbnail} alt="" />
               </div>
               <div className="ProductDetail__galery">
                 <div className="ProductDetail__image">
-                  <img src={prductImg} alt="" />
+                  <img src={props.product.prod_thumbnail} alt="" />
                 </div>
                 <div className="ProductDetail__image">
-                  <img src={prductImg} alt="" />
+                  <img src={props.product.prod_thumbnail} alt="" />
                 </div>
                 <div className="ProductDetail__image">
-                  <img src={prductImg} alt="" />
+                  <img src={props.product.prod_thumbnail} alt="" />
                 </div>
                 <div className="ProductDetail__image">
-                  <img src={prductImg} alt="" />
+                  <img src={props.product.prod_thumbnail} alt="" />
                 </div>
               </div>
             </div>
@@ -41,22 +43,13 @@ function ProductDetail() {
                   <Breadcrumb.Item>Thuốc lá IQOS</Breadcrumb.Item>
                 </Breadcrumb>
               </div>
-              <h1 className="ProductDetail__title">2 vị mới nhất của Fiit</h1>
+              <h1 className="ProductDetail__title">{props.product.prod_name}</h1>
               <div className="ProductDetail__priceGroup">
                 <p>Giá :</p>
-                <h2 className="ProductDetail__price">Liên hệ</h2>
+                <h2 className="ProductDetail__price">{props.product.prod_price}</h2>
               </div>
               <div className="ProductDetail__shortDescription">
-                <p>
-                  <strong>2 vị mới nhất:</strong>
-                </p>
-                <ul>
-                  <li>Fiit Match: Vị cafe sữa</li>
-                  <li>Fiit Sparky vị bạc hà – chanh</li>
-                </ul>
-                <p>
-                  <strong>Xuất xứ: </strong> Hàn Quốc
-                </p>
+                {props.prod_short_description}
               </div>
               <div className="ProductDetail__hotline">
                 <a href="tel:0972.939.830">Hotline: 0972.939.830</a>
@@ -77,16 +70,7 @@ function ProductDetail() {
                 key="1"
                 className="ProductDetail__panel description"
               >
-                Fiit Match – Vị cafe sữa : với những ai yêu thích cà phê, nhất
-                là hút thuốc uống cà phê vào mỗi sáng không nên bỏ qua vị này là
-                sự kết hợp chút vị nicotine với thơm nồng vị cafe sữa ngon ngọt
-                đượm khói, cảm giác mới lạ độc đáo.
-                <br></br>
-                Fiit Sparky – vị bạc hà chanh : chiết xuất từ lá bạc hà thanh
-                mát tự nhiên, không quá cay nồng và rất đượm mùi, mang đến cảm
-                giác “thông mũi mát họng” trong từng cơn rít thuốc bấm đổi vị
-                hương chanh thơm mát hòa quyện tạo nên một cảm giác êm dịu thơm
-                mát đến lạ kì.
+                {props.product.prod_description}
               </Tabs.TabPane>
               <Tabs.TabPane
                 tab="Hướng dẫn sử dụng"
