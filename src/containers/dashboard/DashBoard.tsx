@@ -8,7 +8,8 @@ import {
   UserAddOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import Logo from "../../assets/images/logogiuseart.png";
+import testLogo from "../../assets/images/logogiuseart.png";
+import Logo from "../../assets/images/megaLogo.png";
 import "./DashBoard.scss";
 import { Dropdown, Layout, Menu, Modal, Space } from "antd";
 import React, { useState } from "react";
