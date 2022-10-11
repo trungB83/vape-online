@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import logoImg from "../../assets/images/logogiuseart.png";
 import hotlineImg from "assets/images/hotline.png";
 import routes from "constants/routes";
+import CONFIGS from 'configs';
+import { get } from 'lodash';
 
 function Header(props: any) {
   return (
@@ -12,9 +14,9 @@ function Header(props: any) {
         <div className="container">
           <div className="header-main">
             <div className="header__logo">
-              <Link to="/">
-                <img src={logoImg} alt="" />
-              </Link>
+         
+              <img src={`${CONFIGS.UPLOAD_API_URL}/${get(props, 'appConfig.CONFIG_CLIENT.value.client_logo', '')}`} className="app-logo" />
+      
             </div>
             <nav className="header__navigate">
               <ul className="header__navigate-list">
@@ -22,7 +24,7 @@ function Header(props: any) {
                   <Link to="/">Trang chủ</Link>
                 </li>
                 <li className="header__navigate-item">
-                  <Link to="/">Giới thiệu</Link>
+                  <Link to="/introduce">Giới thiệu</Link>
                 </li>
                 <li className="header__navigate-item">
                   <Link to="/product-category/:productCategoryId">
@@ -39,7 +41,7 @@ function Header(props: any) {
                   <Link to="/">Ý kiến khách hàng</Link>
                 </li>
                 <li className="header__navigate-item">
-                  <Link to="/">Liên hệ</Link>
+                  <Link to="/contact">Liên hệ</Link>
                 </li>
                 <li className="header__navigate-item">
                   <Link to={routes.login}>Đăng nhập</Link>

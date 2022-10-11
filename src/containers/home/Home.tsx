@@ -3,38 +3,27 @@ import Header from "components/header/Header";
 import Footer from "components/footer/Footer";
 import HomeContent from "components/homeContent/homeContent";
 import axios from "axios";
-
-function Home () {
+import { useSelector } from "react-redux";
+import { get } from "lodash";
+function Home(props: any) {
   const [products, setProducts] = useState([]);
-  const [categoryProducts, setCategoryProducts] = useState([]);
-  const [categoryPosts, setCategoryPost] = useState([]);
-  const [posts, setPosts] = useState([]);
-
-
   useEffect(() => {
     const getDatas = async () => {
       let productRes = await axios.get("http://localhost:3003/products");
-      console.log("productRes", productRes);
       setProducts(productRes.data.list);
-      console.log("products", products);
-
-      setCategoryProducts(productRes.data.category_list);
-      console.log("categoryProducts", categoryProducts);
-
-      let postRes = await axios.get("http://localhost:3003/posts");
-      setCategoryPost(postRes.data.category_list);
-      console.log("categoryPosts", categoryPosts);
-      setPosts(postRes.data.list);
-      console.log("posts", posts);
     };
     getDatas();
-
   }, []);
+
+  const configApp = useSelector((state: any) => state.config);
+  const config = get(configApp, "list.result.data");
+  const HOT_POSTS = get(configApp, 'list.result.data.HOT_POSTS', []);
+  if (props.hidden) return null;
 
   return (
     <div className="app">
-      <Header categoryPosts={categoryPosts} categoryProducts={categoryProducts}/>
-      <HomeContent products={products} posts={posts}/>
+      <Header appConfig={config} />
+      <HomeContent products={products} HOT_POSTS={HOT_POSTS} />
       <Footer />
     </div>
   );

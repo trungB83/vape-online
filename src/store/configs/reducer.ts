@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchConfig, fetchConfigs } from 'store/configs/action';
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchConfig, fetchConfigs } from "store/configs/action";
 
 export const configSlice = createSlice({
-  name: 'config',
+  name: "config",
   initialState: {
     list: {
       loading: false,
@@ -32,8 +32,17 @@ export const configSlice = createSlice({
     },
     [fetchConfigs.fulfilled as any]: (state, action) => {
       state.list.loading = false;
-      const configObjects = action.payload.data.configs.reduce((obj: any, item: any) => Object.assign(obj, { [item.ma_cau_hinh]: { ...item, value: JSON.parse(item.du_lieu) } }), {});
-      const result = { ...action.payload, data: { ...action.payload.data, ...configObjects } };
+      const configObjects = action.payload.data.configs.reduce(
+        (obj: any, item: any) =>
+          Object.assign(obj, {
+            [item.ma_cau_hinh]: { ...item, value: JSON.parse(item.du_lieu) },
+          }),
+        {}
+      );
+      const result = {
+        ...action.payload,
+        data: { ...action.payload.data, ...configObjects },
+      };
       state.list.result = result;
     },
     [fetchConfigs.rejected as any]: (state, action) => {
@@ -41,7 +50,7 @@ export const configSlice = createSlice({
       state.list.error = action.error;
     },
   },
-  reducers: {}
+  reducers: {},
 });
 
 export const config = (state: any) => state.config;

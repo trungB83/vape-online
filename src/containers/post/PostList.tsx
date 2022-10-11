@@ -4,34 +4,34 @@ import Footer from "../../components/footer/Footer";
 import PostListContent from '../../components/postList/PostList';
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { get } from "lodash";
 
-function PostList() {
-  const [posts, setPosts] = useState([]);
-  const [categoryPosts, setCategoryPost] = useState([]);
-  const [currentCategory, setCurrentCategory] = useState({});
-  const params = useParams();
-  
+function PostList(props:any) {
+
+  const [products, setProducts] = useState([]);
   useEffect(() => {
-    const getPosts = async () => {
-      let postRes = await axios.get("http://localhost:3003/posts");
-      console.log("postRes", postRes);
-      const currentPosts = postRes.data.list.filter((item:any) => item.post_category_id == params.postCategoryId);
-      console.log("currentPosts", currentPosts);
-      setPosts(currentPosts);
-      setCategoryPost(postRes.data.category_list);
-      const currentCate = postRes.data.category_list.find((item:any) => item.post_category_id == params.postCategoryId);
-      setCurrentCategory(currentCate);
-      console.log("currentCategory", currentCategory);
+    const getDatas = async () => {
+      let productRes = await axios.get("http://localhost:3003/products");
+      console.log("productRes", productRes);
+      
+      setProducts(productRes.data.list);
     };
-    if (params.postCategoryId) {
-      getPosts()
-    }
-  }, [params]);
+    getDatas();
+  }, []);
+
+  const params = useParams();
+  const configApp = useSelector((state: any) => state.config);
+  const config = get(configApp, "list.result.data");
+  const HOT_POSTS = get(configApp, 'list.result.data.HOT_POSTS', []);
+  if (props.hidden) return null;
+
+  
 
   return (
     <div className="app">
-      <Header />
-      <PostListContent posts={posts}/>
+      <Header appConfig={config}/>
+      <PostListContent products={products}  HOT_POSTS={HOT_POSTS}/>
       <Footer />
     </div>
   );

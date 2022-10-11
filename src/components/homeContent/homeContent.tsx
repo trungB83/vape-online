@@ -8,9 +8,12 @@ import icon4 from "../../assets/images/icon-4.png";
 import prductImg from "../../assets/images/IQOSBLUEgiabanhcm0.jpg";
 import chonkDescrpitionImg from "../../assets/images/cuahang.jpg";
 import { Carousel } from "antd";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { get } from "lodash";
+import CONFIGS from "configs";
 
 function HomeContent(props: any) {
-  console.log("props", props);
+  console.log("data props", props);
 
   return (
     <>
@@ -116,7 +119,7 @@ function HomeContent(props: any) {
           <h1 className="products-title-section">Sản phẩm IQOS</h1>
           <div className="products__group">
             <div className="products__list">
-              {props.products.map((product: any, index: number) => (
+              {get(props, "products", []).map((product: any, index: number) => (
                 <Link
                   to={`/product/${product.prod_id}`}
                   className="product__item"
@@ -137,10 +140,11 @@ function HomeContent(props: any) {
           <h1 className="products-title-section">Phụ kiện IQOS</h1>
           <div className="products__group">
             <div className="products__list">
-              {props.products.map((product: any, index: number) => (
+                {get(props, "products", []).map((product: any, index: number) => (
                 <Link
                   to={`/product/${product.prod_id}`}
-                  className="product__item" key={product.prod_id}
+                  className="product__item"
+                  key={index}
                 >
                   <img src={product.prod_thumbnail} alt="product-img" />
                   <div className="product-text">
@@ -158,10 +162,11 @@ function HomeContent(props: any) {
           <h1 className="products-title-section">Thuốc lá IQOS</h1>
           <div className="products__group">
             <div className="products__list">
-              {props.products.map((product: any, index: number) => (
+              {get(props, "products", []).map((product: any, index: number) => (
                 <Link
                   to={`/product/${product.prod_id}`}
                   className="product__item"
+                  key={index}
                 >
                   <img src={product.prod_thumbnail} alt="product-img" />
                   <div className="product-text">
@@ -225,21 +230,21 @@ function HomeContent(props: any) {
         <h1 className="products-title-section">Tin tức / Video</h1>
         <div className="post__group">
           <div className="post__list">
-          {props.posts.map((post: any, index: number) => (
-            <Link
-                to={`/post/${post.post_id}`}
+            {get(props, "HOT_POSTS", []).map((post: any, index: number) => (
+              <Link
+                to={`/post/${post.tin_tuc_id}`}
                 className="post__item"
-                key={post.post_id}
+                key={index}
               >
-                <img src={post.post_thumbnail} alt="post-img" />
+                <img
+                  src={`${CONFIGS.UPLOAD_API_URL}/${post.anh_dai_dien}`}
+                  alt="post-img"
+                />
                 <div className="post-text">
-                  <div className="post-title">{post.post_name}</div>
-
+                  <div className="post-title">{post.tieu_de}</div>
                 </div>
               </Link>
-          ))}
-              
-       
+            ))}
           </div>
         </div>
       </section>

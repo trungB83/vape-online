@@ -13,6 +13,11 @@
       height: 100%;
       .header__logo {
         flex-basis: 20%;
+        img {
+          width: 50%;
+          display: block;
+          
+        }
       }
       .header__navigate {
         flex : 1;
@@ -27,6 +32,7 @@
             a {
               line-height: 40px;
               text-transform: uppercase;
+              
             }
             a:hover {
               text-decoration: underline;

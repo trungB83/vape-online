@@ -1,34 +1,36 @@
 import "./PostList.scss";
-import React from "react";
 import { Link } from "react-router-dom";
-import asideProductImg from "../../assets/images/nga360x360100x100.jpg";
-import asidePostImg from "../../assets/images/circle-post.jpg";
-import postImg from "../../assets/images/cuahang-300x280.jpg";
 
-function PostList(props:any) {
-  console.log("props", props );
-  
+import { get } from "lodash";
+import CONFIGS from "configs";
+import { removeHtmlTag } from "helpers/common";
+function PostList(props: any) {
+  console.log("props", props);
+
   return (
     <div className="container">
       <div className="postCategory">
         <div className="postCategory__content">
           <div className="postCategory__list">
-
-            <Link to="/post/:postId" className="postCategory__post">
-              <div className="postCategory__post-img">
-                <img src={postImg} alt="" />
-              </div>
-              <div className="postCategory__post-text">
-                <div className="postCategory__post-title">
-                  Vị thuốc IQOS nào phù hợp với bạn
+            {get(props, "HOT_POSTS", []).map((post: any, index: number) => (
+              <Link
+                to={`/post/${post.tin_tuc_id}`}
+                className="postCategory__post"
+              >
+                <div className="postCategory__post-img">
+                  <img
+                    src={`${CONFIGS.UPLOAD_API_URL}/${post.anh_dai_dien}`}
+                    alt=""
+                  />
                 </div>
-                <div className="postCategory__post-subTitle">
-                  Để chiều lòng người sử dụng IQOS, nhà sản xuất đã cho ra mắt
-                  các...
+                <div className="postCategory__post-text">
+                  <div className="postCategory__post-title">{post.tieu_de}</div>
+                  <div className="postCategory__post-subTitle">
+                    {removeHtmlTag(post.mo_ta)}
+                  </div>
                 </div>
-              </div>
-            </Link>
-           
+              </Link>
+            ))}
           </div>
         </div>
         <div className="postCategory__aside">
@@ -50,46 +52,19 @@ function PostList(props:any) {
             <h3 className="postCategory__aside-title">BÀI VIẾT XEM NHIỀU</h3>
             <div className="postCategory__aside-inner">
               <ul className="postCategory__asideMostView">
-                <li className="postCategory__asideMostView-item">
-                  <div className="postCategory__asideMostView-img">
-                    <img src={asidePostImg} alt="" />
-                  </div>
-                  <Link to="/" className="postCategory__asideMostView-title">
-                    Ở Hòa Bình mua iQOS ở đâu chính hãng?
-                  </Link>
-                </li>
-                <li className="postCategory__asideMostView-item">
-                  <div className="postCategory__asideMostView-img">
-                    <img src={asidePostImg} alt="" />
-                  </div>
-                  <Link to="/" className="postCategory__asideMostView-title">
-                    Ở Hòa Bình mua iQOS ở đâu chính hãng?
-                  </Link>
-                </li>
-                <li className="postCategory__asideMostView-item">
-                  <div className="postCategory__asideMostView-img">
-                    <img src={asidePostImg} alt="" />
-                  </div>
-                  <Link to="/" className="postCategory__asideMostView-title">
-                    Ở Hòa Bình mua iQOS ở đâu chính hãng?
-                  </Link>
-                </li>
-                <li className="postCategory__asideMostView-item">
-                  <div className="postCategory__asideMostView-img">
-                    <img src={asidePostImg} alt="" />
-                  </div>
-                  <Link to="/" className="postCategory__asideMostView-title">
-                    Ở Hòa Bình mua iQOS ở đâu chính hãng?
-                  </Link>
-                </li>
-                <li className="postCategory__asideMostView-item">
-                  <div className="postCategory__asideMostView-img">
-                    <img src={asidePostImg} alt="" />
-                  </div>
-                  <Link to="/" className="postCategory__asideMostView-title">
-                    Ở Hòa Bình mua iQOS ở đâu chính hãng?
-                  </Link>
-                </li>
+                {get(props, "HOT_POSTS", []).map((post: any, index: number) => (
+                  <li className="postCategory__asideMostView-item" key={index}>
+                    <div className="postCategory__asideMostView-img">
+                      <img
+                        src={`${CONFIGS.UPLOAD_API_URL}/${post.anh_dai_dien}`}
+                        alt=""
+                      />
+                    </div>
+                    <Link to="/" className="postCategory__asideMostView-title">
+                      Ở Hòa Bình mua iQOS ở đâu chính hãng?
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </aside>
@@ -113,66 +88,20 @@ function PostList(props:any) {
             <h3 className="postCategory__aside-title">SẢN PHẨM NỔI BẬT</h3>
             <div className="postCategory__aside-inner">
               <ul className="postCategory__aside-vertial-list">
-                <li className="postCategory__aside-vertial-item">
-                  <img src={asideProductImg} alt="" />
-                  <div className="postCategory__aside-vertial-text">
-                    <h3 className="verticalProduct-title">
-                      Thuốc Heets Âu cho IQOS
-                    </h3>
-                    <div className="verticalProduct-price">
-                      <p>Giá:</p>
-                      <p className="verticalProduct-price__text">Liên hệ</p>
+                {get(props, "products", []).map((product: any, index: number) => (
+                  <li className="postCategory__aside-vertial-item">
+                    <img src={product.prod_thumbnail} alt="" />
+                    <div className="postCategory__aside-vertial-text">
+                      <h3 className="verticalProduct-title">
+                        {product.prod_title}
+                      </h3>
+                      <div className="verticalProduct-price">
+                        <p>Giá:</p>
+                        <p className="verticalProduct-price__text">{product.prod_price}</p>
+                      </div>
                     </div>
-                  </div>
-                </li>
-                <li className="postCategory__aside-vertial-item">
-                  <img src={asideProductImg} alt="" />
-                  <div className="postCategory__aside-vertial-text">
-                    <h3 className="verticalProduct-title">
-                      Thuốc Heets Âu cho IQOS
-                    </h3>
-                    <div className="verticalProduct-price">
-                      <p>Giá:</p>
-                      <p className="verticalProduct-price__text">Liên hệ</p>
-                    </div>
-                  </div>
-                </li>
-                <li className="postCategory__aside-vertial-item">
-                  <img src={asideProductImg} alt="" />
-                  <div className="postCategory__aside-vertial-text">
-                    <h3 className="verticalProduct-title">
-                      Thuốc Heets Âu cho IQOS
-                    </h3>
-                    <div className="verticalProduct-price">
-                      <p>Giá:</p>
-                      <p className="verticalProduct-price__text">Liên hệ</p>
-                    </div>
-                  </div>
-                </li>
-                <li className="postCategory__aside-vertial-item">
-                  <img src={asideProductImg} alt="" />
-                  <div className="postCategory__aside-vertial-text">
-                    <h3 className="verticalProduct-title">
-                      Thuốc Heets Âu cho IQOS
-                    </h3>
-                    <div className="verticalProduct-price">
-                      <p>Giá:</p>
-                      <p className="verticalProduct-price__text">Liên hệ</p>
-                    </div>
-                  </div>
-                </li>
-                <li className="postCategory__aside-vertial-item">
-                  <img src={asideProductImg} alt="" />
-                  <div className="postCategory__aside-vertial-text">
-                    <h3 className="verticalProduct-title">
-                      Thuốc Heets Âu cho IQOS
-                    </h3>
-                    <div className="verticalProduct-price">
-                      <p>Giá:</p>
-                      <p className="verticalProduct-price__text">Liên hệ</p>
-                    </div>
-                  </div>
-                </li>
+                  </li>
+                ))}
               </ul>
             </div>
           </aside>

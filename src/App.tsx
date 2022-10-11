@@ -1,10 +1,12 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { fetchConfigs } from "store/configs/action";
 import { store } from "store/store";
+import { useAppDispatch } from "helpers/hooks/reduxHooks";
 
 const Home = lazy(() => import("../src/containers/home/Home"));
-
+const Introduce = lazy(() => import("containers/introduce/Introduce"));
 const Contact = React.lazy(() => import("../src/containers/contact/Contact"));
 const ProductDetail = React.lazy(
   () => import("../src/containers/products/ProductDetail")
@@ -46,16 +48,21 @@ const FogotPass = React.lazy(
 //   import("../src/containers/dashboard/pages/profile/Profile")
 // );
 
-function App() {
+const App = () => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchConfigs({}));
+  }, [dispatch]);
+
   return (
     <div className="App">
-      <Provider store={store}>
+      <Suspense fallback={"Loading..."}>
         <BrowserRouter>
           <Routes>
             <Route path="/">
               <Route index element={<Home />} />
               <Route path="contact" element={<Contact />} />
-
+              <Route path="introduce" element={<Introduce />} />
               <Route
                 path="product-category/:productCategoryId"
                 element={<ProductCategory />}
@@ -84,9 +91,9 @@ function App() {
             </Route>
           </Routes>
         </BrowserRouter>
-      </Provider>
+      </Suspense>
     </div>
   );
-}
+};
 
 export default App;

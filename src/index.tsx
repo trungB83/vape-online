@@ -4,15 +4,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "antd/dist/antd.css";
 import "assets/styles/styles.scss";
+import { Provider } from "react-redux";
+import { store } from "store/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
 root.render(
-  <Suspense fallback={"Loading..."}>
+  <Provider store={store}>
     <App />
-  </Suspense>
+  </Provider>
 );
 
 reportWebVitals();
